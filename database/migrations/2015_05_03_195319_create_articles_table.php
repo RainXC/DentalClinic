@@ -12,15 +12,15 @@ class CreateArticlesTable extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('articles', function(Blueprint $table)
-        {
-            $table->increments('id');
-            $table->string('name', 20);
-            $table->string('alias', 20)->unique();
-            $table->text('text');
-            $table->text('description');
-            $table->timestamps();
-        });
+//        Schema::create('services', function(Blueprint $table)
+//        {
+//            $table->increments('id');
+//            $table->string('name', 20);
+//            $table->string('alias', 20)->unique();
+//            $table->text('text');
+//            $table->text('description');
+//            $table->timestamps();
+//        });
 	}
 
 	/**
@@ -30,7 +30,7 @@ class CreateArticlesTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('articles');
+        Schema::drop('services');
 	}
 
 }

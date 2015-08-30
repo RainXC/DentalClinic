@@ -16,11 +16,13 @@
     <link href="{{ asset('/bootstrap/dist/css/bootstrap-theme.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/dent.css') }}" rel="stylesheet">
 
-    <link href='http://fonts.googleapis.com/css?family=Didact+Gothic&subset=cyrillic-ext,latin' rel='stylesheet' type='text/css'>
-
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
     <script src="/js/knob.js"></script>
+
+    <script type="text/javascript" src="/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/js/ui-utils.min.js"></script>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="/bootstrap/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -37,39 +39,12 @@
 </head>
 <!-- NAVBAR
 ================================================== -->
-<body>
+<body ng-app="test-app">
+@include('header')
 
-<nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-    <div class="container topnav">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand topnav" href="/">RusAnna</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#">Главная</a></li>
-                <li><a href="/services/">Услуги и цены</a></li>
-                <li><a href="#employees">Сотрудники</a></li>
-                <li><a href="#gallery">Галерея</a></li>
-                <li><a href="#about">О нас</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
+@yield('content')
 
-@yield('welcome')
-
-
+@include('footer')
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

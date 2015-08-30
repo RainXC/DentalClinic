@@ -4,7 +4,7 @@ return [
 
 	/*
 	|--------------------------------------------------------------------------
-	| Third Party Services
+	| Third Party UsersUtility
 	|--------------------------------------------------------------------------
 	|
 	| This file is for storing the credentials for third party services such
@@ -15,8 +15,8 @@ return [
 	*/
 
 	'mailgun' => [
-		'domain' => '',
-		'secret' => '',
+		'domain' => 'sandbox7a29f6a6088240c6882b02f54dd326ee.mailgun.org',
+		'secret' => 'key-fb712dc9474c8fe1adaba94ffde4da82',
 	],
 
 	'mandrill' => [

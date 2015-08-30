@@ -1,6 +1,6 @@
 @extends('skelet')
 
-@section('welcome')
+@section('content')
 
     @include('carousel')
 
@@ -8,5 +8,4 @@
 
     @include('mainArticle')
 
-    @include('footer')
 @endsection

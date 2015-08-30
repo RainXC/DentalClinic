@@ -52,7 +52,7 @@ return [
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'ru',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return [
 	|
 	*/
 
-	'fallback_locale' => 'en',
+	'fallback_locale' => 'ru',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -144,7 +144,12 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-//		'App\Articles\ArticleServiceProvider',
+		'App\Services\ServicesServiceProvider',
+		'App\Employees\EmployeesServiceProvider',
+		'App\Gallery\GalleryServiceProvider',
+        'Intervention\Image\ImageServiceProvider'
+
+//        'Laracasts\Validation\ValidationServiceProvider',
 
 	],
 
@@ -193,6 +198,7 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+        'Image'     => 'Intervention\Image\Facades\Image'
 
 	],
 

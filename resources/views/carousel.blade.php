@@ -13,7 +13,7 @@
                 <div class="carousel-caption">
                     <h1>Добро пожаловать!</h1>
                     <p>Наши специалисты предложат вам лучшее лечение.</p>
-                    <p><a class="btn btn-lg btn-primary" href="#contacts" role="button">Записаться на прием</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="/contacts/" role="button">Записаться на прием</a></p>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 <div class="carousel-caption">
                     <h1>Отбеливание зубов</h1>
                     <p>Процедура, которая наделит вас красивой улыбкой</p>
-                    <p><a class="btn btn-lg btn-primary" href="#gallery" role="button">Посмотреть галерею</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="/gallery/" role="button">Посмотреть галерею</a></p>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
                 <div class="carousel-caption">
                     <h1>Здоровые зубы это возможно</h1>
                     <p>Посещение стоматолога неотъемлемая часть заботы о своих зубах</p>
-                    <p><a class="btn btn-lg btn-primary" href="#contacts" role="button">Записаться на прием</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="/contacts/" role="button">Записаться на прием</a></p>
                 </div>
             </div>
         </div>

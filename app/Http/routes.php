@@ -15,6 +15,21 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('contacts', [
+    'as'   => 'contacts',
+    'uses' => 'ContactsController@contacts'
+]);
+
+Route::get('about', [
+    'as'   => 'about',
+    'uses' => 'ArticlesController@about'
+]);
+
+Route::post('contacts/ajaxSendMessage', [
+    'as'   => 'ajaxSendMessage',
+    'uses' => 'ContactsController@ajaxSendMessage'
+]);
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
