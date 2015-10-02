@@ -39,12 +39,7 @@
     </div>
     <div class="content-section-b">
         <div class="container">
-            <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-            </ul>
-            <form ng-controller="ctrlForm" name="form" class="contactsForm" ng-submit="submit()">
+            <form name="form" class="contactsForm" action="/contacts/ajaxSendMessage/">
                 <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                 <div class="col-md-12">
                     <h2>Написать нам сообщение: </h2>
