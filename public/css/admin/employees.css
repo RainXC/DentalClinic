@@ -1,0 +1,42 @@
+.normalMode {
+    display: none;
+}
+.editMode {
+    display: block;
+}
+a {
+    cursor: pointer;
+}
+
+.employeeDetails h4 input,
+.employeeDetails h5 select,
+.employeeDetails select.chooseSpecialities
+{
+    width: 167px;
+    padding: 3px;
+    margin: 0 0 3px 0;
+    font-weight: normal;
+}
+
+.employeeDetails h5 select {
+    width: 167px;
+    padding: 5px;
+    margin: 0;
+}
+
+.employeeDetails select.chooseSpecialities {
+    width: 167px;
+    padding: 5px;
+    margin: 0 0 5px 0;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+.error {
+    display: none;
+    padding: 20px;
+}
+.success {
+    display: none;
+    padding: 20px;
+}

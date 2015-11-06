@@ -1,0 +1,131 @@
+<?php namespace App\Employees\Http\Controllers;
+
+use App\Employees\Models\EmployeesCategories;
+use App\Employees\Models\Position;
+use App\Employees\Models\Speciality;
+use App\Noop;
+use Illuminate\Routing\Controller as BaseController;
+use App\Employees\Models\Employee;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use View;
+
+class EmployeesAdminController extends BaseController
+{
+	protected $modelClassName = 'App\Employees\Models\Employee';
+
+	public function __construct()
+	{
+//		$this->middleware('guest');
+	}
+
+	public function index()
+	{
+		return $this->showAll();
+	}
+
+	public function showAll()
+	{
+		$employees    = new Employee();
+		$positions    = new Position();
+		$specialities = new Speciality();
+
+		return View::make('employees.admin.list', [
+			'employees'    => $employees,
+			'positions'    => $positions,
+			'specialities' => $specialities
+		]);
+	}
+
+	public function show($slug)
+	{
+		$employees    = new Employee();
+		$employee     = $employees->find($slug);
+		$positions    = new Position();
+		$specialities = new Speciality();
+
+		return View::make('employees.admin.show', [
+			'employee'    => $employee,
+			'positions'    => $positions,
+			'specialities' => $specialities
+		]);
+	}
+
+	public function create()
+	{
+		$employee     = new Noop();
+		$positions    = new Position();
+		$specialities = new Speciality();
+
+		return View::make('employees.admin.create', [
+			'employee'     => $employee,
+			'positions'    => $positions,
+			'specialities' => $specialities
+		]);
+	}
+
+	public function edit($id)
+	{
+		$employees = new Employee();
+		$employee = $employees->findOrFail($id);
+		$positions    = new Position();
+		$specialities = new Speciality();
+
+		return View::make('employees.admin.show', [
+			'employee'    => $employee,
+			'positions'    => $positions,
+			'specialities' => $specialities
+		]);
+	}
+
+	public function destroy($id)
+	{
+		$employees = new Employee();
+		$employee  = $employees->findOrFail($id);
+
+		if ( ! $employee->delete())
+		{
+			return response()->json(['result'=>false, 'error'=>"Something went wrong when deleting Employee with ID {$id}"]);
+		}
+
+		return response()->json(true);
+	}
+
+	public function store()
+	{
+		$employee     = new Employee();
+
+		$employee->authorId   = Auth::id();
+		$employee->lastname   = Input::get('lastname');
+		$employee->firstname  = Input::get('firstname');
+		$employee->patronymic = Input::get('patronymic');
+		$employee->positionId = Input::get('positionId');
+		$employee->male       = Input::get('male');
+		$employee->save();
+		if ( Input::get('speciality') ) {
+			$employee->specialities()->sync(Input::get('speciality'));
+		}
+
+		return response()->json(true);
+	}
+
+	public function update($id)
+	{
+		$employees = new Employee();
+		$employee = $employees->findOrFail($id);
+
+		$employee->lastname = Input::get('lastname');
+		$employee->firstname = Input::get('firstname');
+		$employee->patronymic = Input::get('patronymic');
+		$employee->positionId = Input::get('positionId');
+		$employee->male       = Input::get('male');
+
+		if ( Input::get('speciality') ) {
+			$employee->specialities()->sync(Input::get('speciality'));
+		}
+
+		$employee->save();
+
+		return response()->json(true);
+	}
+}

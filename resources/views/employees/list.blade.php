@@ -22,8 +22,8 @@
                         <h4>{{$employee->getName()}}</h4>
                         <h5>{{$employee->position->getName()}}</h5>
                         <p>
-                            @foreach ($employee->getSpecialities() as $speciality)
-                                {{$speciality->details->getName()}}
+                            @foreach ($employee->specialities as $speciality)
+                                {{$speciality->getName()}}
                             @endforeach
                         </p>
                     </div>

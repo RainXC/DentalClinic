@@ -1,0 +1,23 @@
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+    <script>
+        $(function(){
+            $('.start').click(function(){
+                var iframe$ = $('#iframe').attr('src', $('#url').val());
+                $('.output').text( iframe$.children().html() );
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="text" id="url" name="url" value="//dmitri.vput.ru"/>
+<button class="start">Start</button>
+
+<div class="output"></div>
+
+<iframe id="iframe" src="//dmitri.vput.ru" frameborder="0" style="width: 600px; height: 400px;">
+</iframe>
+
+</body>
+</html>

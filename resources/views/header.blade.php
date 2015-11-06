@@ -14,13 +14,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li <?=($_SERVER['REQUEST_URI']=='/')?'class="active"':''?>><a href="/">Главная</a></li>
-                <li <?=($_SERVER['REQUEST_URI']=='/services/')?'class="active"':''?>>
-                    <a href="/services/">Услуги и цены</a>
-                    {{--<ul class="submenu">--}}
-                        {{--<li> <a href="/services/#terapy">Лечение</a> </li>--}}
-                        {{--<li> <a href="/services/#prosthetics">Протезирование</a> </li>--}}
-                    {{--</ul>--}}
-                </li>
+                <li <?=($_SERVER['REQUEST_URI']=='/services/')?'class="active"':''?>><a href="/services/">Услуги и цены</a></li>
                 <li <?=($_SERVER['REQUEST_URI']=='/employees/')?'class="active"':''?>><a href="/employees/">Сотрудники</a></li>
                 <li <?=($_SERVER['REQUEST_URI']=='/gallery/')?'class="active"':''?>><a href="/gallery/">Галерея</a></li>
                 <li <?=($_SERVER['REQUEST_URI']=='/about/')?'class="active"':''?>><a href="/about/">О нас</a></li>

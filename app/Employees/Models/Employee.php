@@ -46,12 +46,9 @@ class Employee extends Eloquent {
         return $this->lastname.' '.$this->firstname.' '.$this->patronymic;
     }
 
-    public function getSpecialities()
+    public function specialities()
     {
-        if ( !$this->employeeSpecialities ) {
-            $this->employeeSpecialities = EmployeeSpecialities::where('employeeId', '=', $this->id)->get();
-        }
-        return $this->employeeSpecialities;
+        return $this->belongsToMany('App\Employees\Models\Speciality', 'employees_specialities', 'employeeId', 'specialityId');
     }
 
     public function position()
