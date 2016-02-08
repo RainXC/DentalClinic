@@ -20,3 +20,4 @@ return [
 	"reset" => "Ваш пароль успешно восстановлен!",
 
 ];
+messge('ru.password');

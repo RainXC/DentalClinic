@@ -3,6 +3,9 @@
 @section('content')
     <link rel="stylesheet" href="/css/admin/employees.css">
     <script src="/js/admin/employee.js"></script>
+    <script src="/js/plupload/plupload.full.min.js"></script>
+    {{--<script type="text/javascript" src="/js/plupload/jquery.ui.plupload/jquery.ui.plupload.js"></script>--}}
+    <script src="/js/plupload/i18n/ru.js"></script>
     <div class="content-section-a">
         <div class="container">
             <h1>Новый сотрудник</h1>
@@ -44,6 +47,15 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Пол</label>
+                    <div class="col-sm-10">
+                        <select name="male" class="form-control">
+                            <option value="1">Мужской</option>
+                            <option value="0">Женский</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Специальность</label>
                     <div class="col-sm-10">
                         <ul>
@@ -54,12 +66,6 @@
                                 </li>
                             @endforeach
                         </ul>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Фото</label>
-                    <div class="col-sm-10">
-                        <a class="btn btn-primary btn-sm">Загрузить</a>
                     </div>
                 </div>
                 <div class="form-group">

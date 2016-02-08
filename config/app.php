@@ -147,7 +147,8 @@ return [
 		'App\Services\ServicesServiceProvider',
 		'App\Employees\EmployeesServiceProvider',
 		'App\Gallery\GalleryServiceProvider',
-        'Intervention\Image\ImageServiceProvider'
+        'Intervention\Image\ImageServiceProvider',
+		'JildertMiedema\LaravelPlupload\LaravelPluploadServiceProvider',
 
 //        'Laracasts\Validation\ValidationServiceProvider',
 
@@ -198,7 +199,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-        'Image'     => 'Intervention\Image\Facades\Image'
+        'Image'     => 'Intervention\Image\Facades\Image',
+		'Plupload'  => 'JildertMiedema\LaravelPlupload\Facades\Plupload'
 
 	],
 

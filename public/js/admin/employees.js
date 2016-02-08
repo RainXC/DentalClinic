@@ -21,7 +21,7 @@ objectsView.getDeleteButton = function() {
 };
 
 objectsView.initDelete = function () {
-    objectsView.getDeleteButton().click(objectsView.delete);
+    objectsView.getDeleteButton().click(objectsView.deleteHandler);
 
     return objectsView;
 };
@@ -34,7 +34,17 @@ objectsView.getRowByDeleteButton = function (button$) {
     return button$.parents(objectsView.settings.listRow);
 };
 
-objectsView.delete = function(){
+objectsView.deleteHandler = function(){
+    if ( typeof $(this).data('confirm') == 'undefined' ) {
+        objectsView.delete.call(this);
+    } else {
+        if ( confirm($(this).data('confirm')) ) {
+            objectsView.delete.call(this);
+        }
+    }
+
+};
+objectsView.delete = function () {
     $.post( $(this).data('action'), $(this).data('post'), $.proxy(objectsView.deleteCallback, this));
 };
 

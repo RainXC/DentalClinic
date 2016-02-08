@@ -361,37 +361,17 @@ li.active .submenu {
 }
 
 .employee {
-    border: 1px dotted #F4F4F3;
-    padding: 20px 0;
-    height: 270px;
+    background-color: #fbfbfa;
+    padding: 20px 0px;
+    /*height: 270px;*/
+    transition: 400ms;
+    overflow: hidden;
 }
 
-@media (min-width: 768px) {
-    .employee {
-        border: 1px dotted #F4F4F3;
-        padding: 20px 0;
-        height: 350px;
-    }
+.employeeDetails {
+    height: 120px;
 }
-@media (max-width: 400px) {
-    .employee {
-        border: 1px dotted #F4F4F3;
-        padding: 20px 0;
-        height: 370px;
-    }
-}
-@media (min-width: 400px) {
-    .employee {
-        border: 1px dotted #F4F4F3;
-        padding: 20px 0;
-        height: 370px;
-    }
-}
-@media (min-width: 1200px) {
-    .employee {
-        height: 270px;
-    }
-}
+
 
 .avatar {
     height: 231px;
@@ -481,4 +461,9 @@ form .ng-dirty.ng-invalid{
 .albumImages a {
     padding: 5px;
     display: inline-block;
+}
+
+.additional {
+    color: #979797;
+    font-weight: normal;
 }

@@ -5,8 +5,10 @@
     <div class="content-page-header">
         <div class="container">
             <div class="row pageHeader">
-                <h1>Наши контакты</h1>
-                <p>Будем рады вас принять в нашей клинике!</p>
+                <div class="col-md-12">
+                    <h1>Наши контакты</h1>
+                    <p>В нашу клинику приходят даже здоровые пациенты!</p>
+                </div>
             </div>
         </div>
     </div>
@@ -69,6 +71,7 @@
                             name="phone"
                             ng-model="user.phone"
                             ui-mask="0 (99) 999-999"
+                            placeholder="Пожалуйтса введите свой номер телефона"
                             required
                         >
                     </div>

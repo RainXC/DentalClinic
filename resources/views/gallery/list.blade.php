@@ -8,8 +8,10 @@
 <div class="content-page-header">
     <div class="container">
         <div class="row pageHeader">
-            <h1>Галерея</h1>
-            <p>Вы можете ознакомится с результатами наших трудов.</p>
+            <div class="col-md-12">
+                <h1>Галерея</h1>
+                <p>Вы можете ознакомится с результатами наших трудов.</p>
+            </div>
         </div>
     </div>
 </div>

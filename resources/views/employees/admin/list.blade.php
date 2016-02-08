@@ -44,11 +44,12 @@
                     {{$employee->created_at}}
                 </td>
                 <td>
-                    <a href="{{url('/admin/employees/'.$employee->id)}}" class="btn btn-primary btn-sm">Редактировать</a>
+                    <a href="{{url('/admin/employees/'.$employee->id)}}/edit" class="btn btn-primary btn-sm">Редактировать</a>
                     <a
                         class="btn btn-danger btn-sm delete"
                         data-action="/admin/employees/{{$employee->id}}"
                         data-post="_method=DELETE&_token={{ csrf_token() }}"
+                        data-confirm="Удалить запись?"
                     >Удалить</a>
                 </td>
             </tr>

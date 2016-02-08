@@ -11,29 +11,10 @@ Route::get('employees/{slug}', [
 ]);
 
 Route::group(['middleware' => 'adminAccess'], function () {
+	Route::put('admin/employees/uploadImage', [
+		'as' => 'employees.uploadImage',
+		'uses' => 'EmployeesAdminController@uploadImage'
+	]);
+
 	Route::resource('admin/employees', 'EmployeesAdminController');
-//	Route::get('admin/employees', [
-//		'as' => 'employees.all',
-//		'uses' => 'EmployeesAdminController@showAll'
-//	]);
-//
-//	Route::get('admin/employees/{slug}', [
-//		'as' => 'employees.show',
-//		'uses' => 'EmployeesAdminController@show'
-//	]);
-//
-//	Route::get('admin/employees/{id}/edit/', [
-//		'as' => 'employees.edit',
-//		'uses' => 'EmployeesAdminController@edit',
-//	]);
-//
-//	Route::get('admin/employees/create', [
-//		'as' => 'employees.create',
-//		'uses' => 'EmployeesAdminController@create'
-//	]);
-//
-//	Route::post('admin/employees/store', [
-//		'as' => 'employees.store',
-//		'uses' => 'EmployeesAdminController@store'
-//	]);
 });

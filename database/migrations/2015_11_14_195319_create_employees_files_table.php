@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEmployeesImagesTable extends Migration {
+class CreateEmployeesFilesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,12 +12,13 @@ class CreateEmployeesImagesTable extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('employees_images', function(Blueprint $table)
+        Schema::create('employees_files', function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('title', 1000);
             $table->text('description');
             $table->string('filename', 1000);
+            $table->string('mime', 1000);
             $table->integer('objectId');
             $table->integer('statusId');
             $table->integer('categoryId');
@@ -32,7 +33,7 @@ class CreateEmployeesImagesTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('employees');
+        Schema::drop('employees_files');
 	}
 
 }

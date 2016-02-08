@@ -7,8 +7,10 @@
     <div class="content-page-header">
         <div class="container">
             <div class="row pageHeader">
-                <h1>О нас</h1>
-                <p>Рады познакомиться с вами!</p>
+                <div class="col-md-12">
+                    <h1>О нас</h1>
+                    <p>Рады познакомиться с вами!</p>
+                </div>
             </div>
         </div>
     </div>

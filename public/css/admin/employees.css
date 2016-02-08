@@ -8,6 +8,19 @@ a {
     cursor: pointer;
 }
 
+h1 .additional {
+    font-size: 18px;
+    color: #999999;
+}
+h2 .additional {
+    font-size: 16px;
+    color: #999999;
+}
+h3 .additional {
+    font-size: 14px;
+    color: #999999;
+}
+
 .employeeDetails h4 input,
 .employeeDetails h5 select,
 .employeeDetails select.chooseSpecialities

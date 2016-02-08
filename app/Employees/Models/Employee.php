@@ -71,12 +71,13 @@ class Employee extends Eloquent {
         return !$this->isMale();
     }
 
-    public function getAvatar()
+    public function getAvatar( $size = null )
     {
         $no_avatar = $this->isMale()?'male.jpg':'female.jpg';
-
-        return $this->image
-            ? $this->image->getUrl()
+        $image = $this->image
+            ? $this->image->getImage($size)
             : '/data/images/employees/no_avatar_'.$no_avatar;
+
+        return $image;
     }
 }

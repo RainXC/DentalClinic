@@ -1,5 +1,7 @@
 <?php namespace App\Employees\Http\Controllers;
 
+use App\Employees\Models\EmployeeImageHandler;
+use App\Employees\Models\EmployeeImageUploader;
 use App\Employees\Models\EmployeesCategories;
 use App\Employees\Models\Position;
 use App\Employees\Models\Speciality;
@@ -8,6 +10,8 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Employees\Models\Employee;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
+use JildertMiedema\LaravelPlupload\Facades\Plupload;
 use View;
 
 class EmployeesAdminController extends BaseController
@@ -71,7 +75,7 @@ class EmployeesAdminController extends BaseController
 		$positions    = new Position();
 		$specialities = new Speciality();
 
-		return View::make('employees.admin.show', [
+		return View::make('employees.admin.edit', [
 			'employee'    => $employee,
 			'positions'    => $positions,
 			'specialities' => $specialities
@@ -114,8 +118,8 @@ class EmployeesAdminController extends BaseController
 		$employees = new Employee();
 		$employee = $employees->findOrFail($id);
 
-		$employee->lastname = Input::get('lastname');
-		$employee->firstname = Input::get('firstname');
+		$employee->lastname   = Input::get('lastname');
+		$employee->firstname  = Input::get('firstname');
 		$employee->patronymic = Input::get('patronymic');
 		$employee->positionId = Input::get('positionId');
 		$employee->male       = Input::get('male');
@@ -127,5 +131,21 @@ class EmployeesAdminController extends BaseController
 		$employee->save();
 
 		return response()->json(true);
+	}
+
+
+	public function uploadImage()
+	{
+		return Plupload::receive('file', function ($file)
+		{
+			$employees = new Employee();
+			$employee = $employees->findOrFail($_GET['objectId']);
+			$imageHandler = new EmployeeImageHandler($employee);
+			if ( $imageHandler->add($file) ) {
+				$employee = $employees->findOrFail($_GET['objectId']);
+				return ['result' => 'ready', 'url'=>$employee->image->getImage('640x480') ];
+			} else
+				return 'not ready';
+		});
 	}
 }
