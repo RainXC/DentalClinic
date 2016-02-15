@@ -11,17 +11,15 @@ Route::get('gallery/galleryJson', [
 	'uses' => 'GalleryController@showJson'
 ]);
 
-Route::group(['before' => 'auth'], function ()
+Route::group(['middleware' => 'adminAccess'], function ()
 {
-	Route::get('content/{id}/edit/', ['uses' => 'GalleryController@edit', 'as' => 'Gallery.edit']);
-	Route::get('gallery/create', [
-		'as' => 'gallery.create',
-		'uses' => 'GalleryController@create'
+	Route::put('admin/gallery/uploadImage', [
+		'as' => 'gallery.uploadImage',
+		'uses' => 'GalleryAdminController@uploadImage'
 	]);
-	Route::post('gallery/store', [
-		'as' => 'gallery.store',
-		'uses' => 'GalleryController@store'
-	]);
+
+	Route::resource('admin/gallery', 'GalleryAdminController');
+
 });
 
 Route::get('gallery/{slug}', [

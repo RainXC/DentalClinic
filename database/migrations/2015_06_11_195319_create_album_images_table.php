@@ -15,9 +15,15 @@ class CreateAlbumImagesTable extends Migration {
         Schema::create('album_images', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('name', 50);
-            $table->string('alias', 50)->unique();
+            $table->string('title', 250);
             $table->text('description');
+            $table->string('filename', 350);
+            $table->string('mime', 30);
+            $table->string('ext', 5);
+            $table->string('size', 300);
+            $table->integer('objectId');
+            $table->integer('statusId');
+            $table->integer('categoryId');
             $table->integer('authorId');
             $table->timestamps();
         });

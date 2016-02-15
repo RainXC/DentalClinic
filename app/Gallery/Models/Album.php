@@ -45,7 +45,7 @@ class Album extends Eloquent {
      */
     public function images()
     {
-        return $this->hasMany(ImageRow::class, 'albumId', 'id');
+        return $this->hasMany(Image::class, 'objectId', 'id');
     }
 
     /**
@@ -62,5 +62,18 @@ class Album extends Eloquent {
     public function getAlias()
     {
         return $this->alias;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function delete()
+    {
+        return parent::delete();
     }
 }

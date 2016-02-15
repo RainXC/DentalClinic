@@ -1,5 +1,5 @@
 <!-- Carousel ================================================== -->
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -8,7 +8,7 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img class="first-slide" src="/images/care.jpg" alt="Welcome!">
+            <img class="first-slide" src="/images/slides/care.jpg" alt="Welcome!">
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Добро пожаловать!</h1>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="item">
-            <img class="second-slide" src="/images/youngPeople2.jpg" alt="Посмотреть галерею">
+            <img class="second-slide" src="/images/slides/youngPeople2.jpg" alt="Посмотреть галерею">
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Отбеливание зубов</h1>
@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="item">
-            <img class="third-slide" src="/images/slide1.png" alt="Позаботьтесь о своем здоровье">
+            <img class="third-slide" src="/images/slides/slide1.min.png" alt="Позаботьтесь о своем здоровье">
             <div class="container">
                 <div class="carousel-caption">
                     <h1>Здоровые зубы это возможно</h1>

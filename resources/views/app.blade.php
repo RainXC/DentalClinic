@@ -39,6 +39,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Главная</a></li>
 					<li><a href="{{ url('/admin/employees/') }}">Сотрудники</a></li>
+					<li><a href="{{ url('/admin/gallery/') }}">Галерея</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">

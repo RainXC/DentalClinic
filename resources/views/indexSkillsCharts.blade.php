@@ -74,7 +74,7 @@
     {{--</div>--}}
 {{--</div>--}}
 <div class="content-section-a">
-    <div class="container">
+    <div class="container most-useful-services">
         <div class="row">
             <div class="col-lg-4">
                 <img class="img-circle" src="/images/index/bleach.png" alt="Generic placeholder image" width="300" height="300">

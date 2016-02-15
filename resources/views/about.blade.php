@@ -17,7 +17,7 @@
     <div class="content-section-b">
         <div class="container">
             <div class="col-md-6">
-                <div class="contactsImage"><img src="/images/about/cabinet.jpg" /></div>
+                <div class="contactsImage"><img class="img-responsive" src="/images/about/cabinet.jpg" /></div>
             </div>
             <div class="col-md-6">
                 <p>
@@ -35,14 +35,14 @@
                 <p></p>
             </div>
             <div class="col-md-6">
-                <div class="contactsImage"><img src="/images/about/doctors.jpg" /></div>
+                <div class="contactsImage"><img class="img-responsive" src="/images/about/doctors.jpg" /></div>
             </div>
         </div>
     </div>
     <div class="content-section-b">
         <div class="container">
             <div class="col-md-6">
-                <div class="contactsImage"><img src="/images/about/partnership.jpg" /></div>
+                <div class="contactsImage"><img class="img-responsive" src="/images/about/partnership.jpg" /></div>
             </div>
             <div class="col-md-6">
                 <h3>Сотрудничество</h3>
