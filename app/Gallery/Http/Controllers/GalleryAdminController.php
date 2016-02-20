@@ -1,7 +1,8 @@
 <?php namespace App\Gallery\Http\Controllers;
 
-use App\Gallery\Models\AlbumImageHandler;
+use App\Gallery\Models\AlbumImage;
 use App\Gallery\Models\Album;
+use App\Gallery\Models\ObjectImage;
 use App\Noop;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
@@ -99,7 +100,7 @@ class GalleryAdminController extends BaseController
         {
             $albums = new Album();
             $album  = $albums->findOrFail($_GET['objectId']);
-            $imageHandler = new AlbumImageHandler($album);
+            $imageHandler = new ObjectImage($album);
             if ( $imageHandler->add($file) ) {
                 return ['result' => 'ready', 'url' => $imageHandler->getImage()->getImage('640x480') ];
             } else

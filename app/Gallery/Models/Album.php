@@ -1,12 +1,29 @@
 <?php namespace App\Gallery\Models;
 
+use App\Gallery\Models\Image;
 use Eloquent;
 
 /**
  * Class Gallery
  *
  */
-class Album extends Eloquent {
+class Album extends Eloquent implements \App\Interfaces\Imaginable
+{
+
+    public function getImagesTable()
+    {
+        return 'albums_images';
+    }
+
+    public function getFolder()
+    {
+        return '/data/images/gallery/';
+    }
+
+    public function getPath()
+    {
+        return '/images/gallery/';
+    }
 
 	/**
 	 * @const string

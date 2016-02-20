@@ -1,5 +1,6 @@
 <?php namespace App\Employees\Models;
 
+use App\Interfaces\Imaginable;
 use Eloquent;
 
 /**
@@ -7,7 +8,7 @@ use Eloquent;
  *
  * @property \App\User                $author
  */
-class Employee extends Eloquent {
+class Employee extends Eloquent implements Imaginable {
 
 	/**
 	 * @var array
@@ -79,5 +80,20 @@ class Employee extends Eloquent {
             : '/data/images/employees/no_avatar_'.$no_avatar;
 
         return $image;
+    }
+
+    public function getImagesTable()
+    {
+        return 'employees_images';
+    }
+
+    public function getFolder()
+    {
+        return '/data/images/employees/';
+    }
+
+    public function getPath()
+    {
+        return '/images/employees/';
     }
 }

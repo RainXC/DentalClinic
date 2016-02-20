@@ -31,8 +31,12 @@
                 <td>
                     <img src="{{$employee->getAvatar()}}" height="50">
                 </td>
-                <td>{{$employee->getName()}}</td>
-                <td>{{$employee->position->getName()}}</td>
+                <td>
+                    {{$employee->getName()}}
+                </td>
+                <td>
+                    {{$employee->position->getName()}}
+                </td>
                 <td>
                     <ul>
                         @foreach ($employee->specialities as $speciality)

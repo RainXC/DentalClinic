@@ -91,5 +91,6 @@ fileUploader.init = function () {
     });
     uploader.bind('FileUploaded', function(up, file, response) {
         $('#avatar').attr('src', $.parseJSON(response.response).result.url);
+        $(document.getElementById(file.id)).fadeOut();
     });
 };

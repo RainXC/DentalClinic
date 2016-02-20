@@ -6,7 +6,7 @@
  * Time: 21:26
  */
 
-namespace App\Employees\Models;
+namespace App\Images;
 
 class ImageSizes
 {
@@ -45,7 +45,7 @@ class ImageSizes
             return $this->sizeArr[1];
         }
 
-        return null;
+        return false;
     }
 
     public function __toString()

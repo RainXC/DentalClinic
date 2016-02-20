@@ -6,37 +6,40 @@
  * Time: 18:35
  */
 
-namespace App\Gallery\Models;
+namespace App\Images;
 
+use App\Images\Image;
+use App\Images\ImageSizes;
+use App\Interfaces\Imaginable;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class AlbumImageHandler
+class ObjectImage implements \App\Interfaces\Imaginable
 {
-    private $path = '/images/gallery/';
-    private $employee;
+    private $object;
+    private $image;
 
-    public function __construct(Album $employee)
+    public function __construct(Imaginable $object)
     {
-        $this->employee = $employee;
+        $this->object = $object;
     }
 
     public function add(UploadedFile $file)
     {
         if ( $this->addToDb($file) ) {
-            return $file->move($this->getPath(), $this->getName());
+            return $file->move($this->getStoragePath(), $this->getName());
         }
         return false;
     }
 
     private function addToDb(UploadedFile $file)
     {
-        $image = new Image();
+        $image = new Image($this->getObject());
         $image->title       = str_replace('.'.$file->getClientOriginalExtension(), '', $file->getClientOriginalName());
         $image->mime        = $file->getClientMimeType();
         $image->ext         = $file->getClientOriginalExtension();
         $image->filename    = $file->getClientOriginalName();
         $image->size        = $file->getClientSize();
-        $image->objectId    = $this->employee->id;
+        $image->objectId    = $this->getObject()->id;
         $image->statusId    = 1;
         $image->categoryId  = 1;
         $image->save();
@@ -50,6 +53,9 @@ class AlbumImageHandler
         return $this;
     }
 
+    /**
+     * @return Image
+     */
     public function getImage()
     {
         return $this->image;
@@ -60,9 +66,9 @@ class AlbumImageHandler
         return $this->getImage()->id.'.'.$this->getImage()->getExtension();
     }
 
-    public function getPath()
+    public function getStoragePath()
     {
-        return storage_path() . $this->path;
+        return storage_path() . $this->getPath();
     }
 
     public function remove(Image $image)
@@ -79,5 +85,25 @@ class AlbumImageHandler
         }
 
         return false;
+    }
+
+    private function getObject()
+    {
+        return $this->object;
+    }
+
+    public function getImagesTable()
+    {
+        return $this->getObject()->getImagesTable();
+    }
+
+    public function getFolder()
+    {
+        return $this->getObject()->getFolder();
+    }
+
+    public function getPath()
+    {
+        return $this->getObject()->getPath();
     }
 }

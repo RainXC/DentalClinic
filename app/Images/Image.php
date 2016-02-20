@@ -1,8 +1,6 @@
-<?php namespace App\Gallery\Models;
+<?php namespace App\Images;
 
-use App\Images\ObjectImage;
-use App\Images\ImageSizes;
-use App\User;
+use App\Gallery\Models\ObjectImage;
 use Eloquent;
 use \Intervention\Image\Facades\Image as InterventionImage;
 
@@ -12,17 +10,24 @@ use \Intervention\Image\Facades\Image as InterventionImage;
  */
 class Image extends Eloquent {
 
-    private $owner;
-    private $handler;
     /**
-     * @var string
+     * @param \Imaginable $object
      */
-    protected $table = 'albums_images';
+    public function __construct(\App\Interfaces\Imaginable $object )
+    {
+        $this->table  = $object->getTable();
+        $this->folder = $object->getFolder();
+    }
 
     /**
      * @var string
      */
-    protected $folder = '/data/images/gallery/';
+    protected $table;
+
+    /**
+     * @var string
+     */
+    protected $folder;
 
 	/**
 	 * @const string
@@ -138,19 +143,9 @@ class Image extends Eloquent {
     public function getHandler()
     {
         if ( !$this->handler ) {
-            $this->handler = new EmployeeImageHandler($this->getOwner());
+            $this->handler = new ObjectImage($this->owner);
         }
         return $this->handler;
-    }
-
-    private function getOwner()
-    {
-        if (!$this->owner) {
-            $employees = new Employee();
-            $this->owner = $employees->find($this->objectId);
-        }
-
-        return $this->owner;
     }
 
     /**

@@ -21,6 +21,8 @@
 	<![endif]-->
 
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<link href='{{ asset('/js/lightbox/css/lightbox.css') }}' rel='stylesheet' type='text/css'>
+	<script src="/js/lightbox/lightbox.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default">

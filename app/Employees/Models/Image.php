@@ -1,54 +1,60 @@
 <?php namespace App\Employees\Models;
 
-use Eloquent;
+use App\Images\ObjectImage;
+use App\Images\ImageSizes;
 use App\User;
+use Eloquent;
 use \Intervention\Image\Facades\Image as InterventionImage;
 
 /**
- * Class Status
+ * Class Gallery
  *
- * @property \App\User                $author
  */
 class Image extends Eloquent {
+
+    private $owner;
+    private $handler;
+    /**
+     * @var string
+     */
+    protected $table = 'employees_images';
 
     /**
      * @var string
      */
     protected $folder = '/data/images/employees/';
 
-    /**
-     * @var string
-     */
-    protected $table = 'employees_images';
+	/**
+	 * @const string
+	 */
+	const PUBLISHED_AT = 'published_at';
+
 	/**
 	 * @var array
 	 */
 	protected $guarded = ['id', 'author_id'];
 
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * @var array
 	 */
-	public function author()
-	{
-		return $this->belongsTo(User::class, 'author_id');
-	}
+	protected $dates = ['deleted_at', self::PUBLISHED_AT];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function owner()
+    public function author()
     {
-        return $this->belongsTo(Employee::class, 'objectId');
+        return $this->belongsTo(User::class, 'author_id');
     }
 
-	/**
-	 * @param $query
-	 * @return mixed
-	 */
-	public function scopeWithAuthor($query)
-	{
-		return $query->with('author');
-	}
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeWithAuthor($query)
+    {
+        return $query->with('author');
+    }
 
     /**
      * @return string
@@ -92,7 +98,6 @@ class Image extends Eloquent {
      */
     public function getFilefolder($size)
     {
-
         return public_path().$this->folder.$size;
     }
 
@@ -125,17 +130,27 @@ class Image extends Eloquent {
         $sizer = new ImageSizes($size);
 
         return InterventionImage::make( $this->getRealfilepath() )
-                                  ->resize( $sizer->getWidth(), $sizer->getHeight(), function($constraint) {
-                                      $constraint->aspectRatio();
-                                  })->save( $this->getFilepath($sizer) );
+            ->resize( $sizer->getWidth(), $sizer->getHeight(), function($constraint) {
+                $constraint->aspectRatio();
+            })->save( $this->getFilepath($sizer) );
     }
 
     public function getHandler()
     {
         if ( !$this->handler ) {
-            $this->handler = new EmployeeImageHandler($this->owner);
+            $this->handler = new EmployeeImageHandler($this->getOwner());
         }
         return $this->handler;
+    }
+
+    private function getOwner()
+    {
+        if (!$this->owner) {
+            $employees = new Employee();
+            $this->owner = $employees->find($this->objectId);
+        }
+
+        return $this->owner;
     }
 
     /**

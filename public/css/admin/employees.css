@@ -53,3 +53,30 @@ h3 .additional {
     display: none;
     padding: 20px;
 }
+
+.photo {
+    padding: 10px;
+}
+#photo {
+    width: 200px;
+    margin: 20px;
+    display: inline-block;
+}
+#avatar {
+    /*position: absolute;*/
+    /*right: 25px;*/
+    /*top: 65px;*/
+    height: 100px;
+}
+.photoThumb {
+    display: block;
+    width: auto;
+    height: 100px;
+    overflow: hidden;
+    float: right;
+}
+#fileDetails {
+    font-size: 14px;
+    text-align: center;
+    padding-top: 10px;
+}
