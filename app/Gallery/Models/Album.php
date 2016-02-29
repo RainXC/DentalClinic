@@ -62,7 +62,7 @@ class Album extends Eloquent implements \App\Interfaces\Imaginable
      */
     public function images()
     {
-        return $this->hasMany(Image::class, 'objectId', 'id');
+        return $this->hasMany(Image::class, 'objectId', 'id')->orderBy('priority', 'ASC');
     }
 
     /**
@@ -91,6 +91,17 @@ class Album extends Eloquent implements \App\Interfaces\Imaginable
 
     public function delete()
     {
+        if ( $this->images->count() > 0 ) {
+            $res = false;
+            foreach ( $this->images as $image ) {
+                $res = $image->remove();
+            }
+            if ( $res == false ) {
+                return false;
+            }
+        }
+
+
         return parent::delete();
     }
 }

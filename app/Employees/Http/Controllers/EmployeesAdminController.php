@@ -110,7 +110,7 @@ class EmployeesAdminController extends BaseController
 			$employee->specialities()->sync(Input::get('speciality'));
 		}
 
-		return response()->json(true);
+		return response()->json($employee->id);
 	}
 
 	public function update($id)
@@ -130,7 +130,7 @@ class EmployeesAdminController extends BaseController
 
 		$employee->save();
 
-		return response()->json(true);
+		return response()->json($employee->id);
 	}
 
 

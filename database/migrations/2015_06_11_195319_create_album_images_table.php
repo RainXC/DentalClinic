@@ -24,6 +24,7 @@ class CreateAlbumImagesTable extends Migration {
             $table->integer('objectId');
             $table->integer('statusId');
             $table->integer('categoryId');
+            $table->integer('priority');
             $table->integer('authorId');
             $table->timestamps();
         });

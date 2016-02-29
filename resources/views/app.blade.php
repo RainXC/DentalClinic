@@ -11,7 +11,7 @@
 	<link href="{{ asset('/css/admin/controlPanel.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Exo+2:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,8 +21,12 @@
 	<![endif]-->
 
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<link href='{{ asset('/js/lightbox/css/lightbox.css') }}' rel='stylesheet' type='text/css'>
 	<script src="/js/lightbox/lightbox.min.js"></script>
+
+	<script src="/js/admin/fileUploader.js"></script>
+	<script src="/js/admin/sorting.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -40,6 +44,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Главная</a></li>
+					<li><a href="{{ url('/admin/services/') }}">Услуги</a></li>
 					<li><a href="{{ url('/admin/employees/') }}">Сотрудники</a></li>
 					<li><a href="{{ url('/admin/gallery/') }}">Галерея</a></li>
 				</ul>
@@ -64,7 +69,6 @@
 	@yield('content')
 
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

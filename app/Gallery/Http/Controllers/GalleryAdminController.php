@@ -2,6 +2,8 @@
 
 use App\Gallery\Models\AlbumImage;
 use App\Gallery\Models\Album;
+use App\Gallery\Models\GalleryImageHandler;
+use App\Gallery\Models\Image;
 use App\Gallery\Models\ObjectImage;
 use App\Noop;
 use Illuminate\Routing\Controller as BaseController;
@@ -45,7 +47,7 @@ class GalleryAdminController extends BaseController
 
         if ( ! $album->delete())
         {
-            return response()->json(['result'=>false, 'error'=>"Something went wrong when deleting Employee with ID {$id}"]);
+            return response()->json(['result'=>false, 'error'=>"Something went wrong when deleting Album with ID {$id}"]);
         }
 
         return response()->json(true);
@@ -78,7 +80,7 @@ class GalleryAdminController extends BaseController
 		$album->description = Input::get('description');
 		$album->save();
 
-		return response()->json(true);
+		return response()->json($album->id);
 	}
 
 	public function update($id)
@@ -91,7 +93,7 @@ class GalleryAdminController extends BaseController
         $album->description = Input::get('description');
         $album->save();
 
-        return response()->json(true);
+        return response()->json($album->id);
 	}
 
     public function uploadImage()
@@ -100,11 +102,31 @@ class GalleryAdminController extends BaseController
         {
             $albums = new Album();
             $album  = $albums->findOrFail($_GET['objectId']);
-            $imageHandler = new ObjectImage($album);
+            $imageHandler = new GalleryImageHandler($album);
             if ( $imageHandler->add($file) ) {
                 return ['result' => 'ready', 'url' => $imageHandler->getImage()->getImage('640x480') ];
             } else
                 return 'not ready';
         });
     }
+
+	public function setImagesPriority()
+	{
+		$images = new Image();
+		foreach ( $_GET['images'] as $imageId=>$priority ) {
+			$image = $images->find($imageId);
+			$image->priority = $priority;
+			$image->save();
+		}
+		return response()->json(true);
+	}
+
+	public function deleteImage($slug)
+	{
+		$images = new Image();
+		$image  = $images->find($slug);
+		$image->remove();
+
+		return $image->id;
+	}
 }

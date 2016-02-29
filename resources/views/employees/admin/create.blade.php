@@ -15,7 +15,7 @@
         <div class="container">
             <p class="error bg-danger">Сообщение об ошибке</p>
             <p class="success bg-success">Сообщение об успехе</p>
-            <form class="form-horizontal objectForm" action="/admin/employees" method="post">
+            <form class="form-horizontal objectForm" action="/admin/employees" method="post" data-post-action="reload">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="_method" value="POST">
                 <div class="form-group">

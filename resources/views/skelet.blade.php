@@ -16,6 +16,7 @@
     <link href="{{ asset('/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('/bootstrap/dist/css/bootstrap-theme.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/dent.css') }}" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Exo+2:400,700,500,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 

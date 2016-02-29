@@ -105,7 +105,16 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Arimo', sans-serif;
+    font-family: 'Exo 2', sans-serif;
+}
+
+h4 {
+    font-weight: 500;
+}
+h3 {
+    font-weight: 600;
+}
+h1, h2 {
     font-weight: 700;
 }
 
@@ -397,7 +406,8 @@ li.active .submenu {
 .skype,
 .phone,
 .time {
-    color: #337ab7
+    color: #337ab7;
+    font-weight: 500;
 }
 
 .time {
@@ -512,5 +522,5 @@ body,
 
 .most-useful-services p {
     text-align: justify;
-    font-weight: bold;
+    font-weight: normal;
 }

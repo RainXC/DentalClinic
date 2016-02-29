@@ -74,4 +74,24 @@ class Service extends Eloquent {
 	{
 		return $query->orderBy(self::PUBLISHED_AT, $sortOrder);
 	}
+
+	public function getName()
+	{
+		return $this->name;
+	}
+
+	public function getDescription()
+	{
+		return $this->description;
+	}
+
+	public function getPrice()
+	{
+		return $this->price;
+	}
+
+	public function getMeasure()
+	{
+		return $this->measure;
+	}
 }

@@ -138,7 +138,7 @@ class Image extends Eloquent {
     public function getHandler()
     {
         if ( !$this->handler ) {
-            $this->handler = new EmployeeImageHandler($this->getOwner());
+            $this->handler = new GalleryImageHandler($this->getOwner());
         }
         return $this->handler;
     }
@@ -146,8 +146,8 @@ class Image extends Eloquent {
     private function getOwner()
     {
         if (!$this->owner) {
-            $employees = new Employee();
-            $this->owner = $employees->find($this->objectId);
+            $albums = new Album();
+            $this->owner = $albums->find($this->objectId);
         }
 
         return $this->owner;

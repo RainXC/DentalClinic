@@ -49,9 +49,26 @@
                             <div id="fileDetails"></div>
                         </div>
                         <div class="images">
-                            @foreach($album->images as $image)
-                                <img src="{{$image->getImage('640x480')}}" alt="" width="100">
-                            @endforeach
+                            <ul id="sortable" data-sorting-action="/admin/gallery/setImagesPriority/?objectId={{$album->id}}">
+                                @foreach($album->images as $image)
+                                <li data-id="{{$image->id}}" data-priority="{{$image->priority}}">
+                                    <span class="imageContainer">
+                                        <a href="{{$image->getImage('640x480')}}" data-lightbox="lightbox">
+                                            <img src="{{$image->getImage('640x480')}}" alt="" width="150">
+                                        </a>
+                                    </span>
+                                    <span class="controls">
+                                        {{--<span class="removeButton btn btn-xs btn-primary">Изменить</span>--}}
+                                        <span
+                                            class="removeButton btn btn-xs btn-danger"
+                                            data-action="/admin/gallery/deleteImage/{{$image->id}}"
+                                            data-post="_token={{csrf_token()}}&_method=DELETE"
+                                        >Удалить</span>
+                                    </span>
+                                </li>
+                                @endforeach
+                            </ul>
+
                         </div>
                     </div>
                 </div>

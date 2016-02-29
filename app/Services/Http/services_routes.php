@@ -6,17 +6,9 @@ Route::get('services', [
 	'uses' => 'ServicesController@showAll'
 ]);
 
-Route::group(['before' => 'auth'], function ()
+Route::group(['middleware' => 'adminAccess'], function ()
 {
-	Route::get('content/{id}/edit/', ['uses' => 'ServicesController@edit', 'as' => 'services.edit']);
-	Route::get('services/create', [
-		'as' => 'services.create',
-		'uses' => 'ServicesController@create'
-	]);
-	Route::post('services/store', [
-		'as' => 'services.store',
-		'uses' => 'ServicesController@store'
-	]);
+	Route::resource('admin/services', 'ServicesAdminController');
 });
 
 Route::get('services/{slug}', [

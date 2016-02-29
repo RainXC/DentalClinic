@@ -8,14 +8,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Галерея <a href="/admin/gallery/create/" class="btn btn-primary btn-sm">Добавить</a></h1>
+                <h1>Услуги <a href="/admin/services/create/" class="btn btn-primary btn-sm">Добавить</a></h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <p class="additional">
-                    Раздел предназначен для управлеия альбомами. Вы можете создавать, редактировать, удалять альбомы.
-                    В каждый альбом вы можете загрузить неограниченное количество фотографий.
+                    Раздел предназначен для управлеия услугами. Вы можете создавать, редактировать, удалять услуги.
+                    Этот радел поможет сохранять цены в актуальном состоянии.
                 </p>
             </div>
         </div>
@@ -29,27 +29,35 @@
             <th>№</th>
             <th>Название</th>
             <th>Описание</th>
+            <th>Цена</th>
+            <th>Еденица измерения</th>
             <th>Дата регистрации</th>
             <th>Действия</th>
         </tr>
         </thead>
         <tbody>
         <? $count = 0; ?>
-        @foreach ($albums->get() as $album)
-            <tr class="listRow" id="listRow{{$album->id}}">
+        @foreach ($services->get() as $service)
+            <tr class="listRow" id="listRow{{$service->id}}">
                 <td>{{++$count}}</td>
-                <td>{{$album->getName()}}</td>
+                <td>{{$service->getName()}}</td>
                 <td>
-                    {{$album->getDescription()?$album->getDescription():'Описание отсутствует'}}
+                    {{$service->getDescription()?$service->getDescription():'Описание отсутствует'}}
                 </td>
                 <td>
-                    {{$album->created_at}}
+                    {{$service->getPrice()}}
                 </td>
                 <td>
-                    <a href="{{url('/admin/gallery/'.$album->id)}}/edit" class="btn btn-primary btn-sm">Редактировать</a>
+                    {{$service->getMeasure()}} {{$service->measurement->getNameByValue($service->getMeasure())}}
+                </td>
+                <td>
+                    {{$service->created_at}}
+                </td>
+                <td>
+                    <a href="{{url('/admin/services/'.$service->id)}}/edit" class="btn btn-primary btn-sm">Редактировать</a>
                     <a
                         class="btn btn-danger btn-sm delete"
-                        data-action="/admin/gallery/{{$album->id}}"
+                        data-action="/admin/services/{{$service->id}}"
                         data-post="_method=DELETE&_token={{ csrf_token() }}"
                         data-confirm="Удалить запись?"
                     >Удалить</a>

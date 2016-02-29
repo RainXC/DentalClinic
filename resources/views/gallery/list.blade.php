@@ -16,16 +16,20 @@
     </div>
 </div>
 <div class="container" ng-controller="ctrlGallery">
+    @foreach( $albums as $album )
     <div ng-repeat="album in albums | filter:query">
-        <h3 class="albumHead">[[album.name]]</h3>
+        <h3 class="albumHead">{{$album->getName()}}</h3>
         <div class="albumImages">
+            @foreach( $album->images as $image )
             <span ng-repeat="image in album.images | filter:query">
-                <a href="/img/cache/large/[[image.id]].[[image.ext]]" data-lightbox="[[album.alias]]">
-                    <img ng-src="/img/cache/small/[[image.id]].[[image.ext]]" alt=""/>
+                <a href="{{$image->getImage('1024x768')}}" data-lightbox="{{$album->getName()}}">
+                    <img src="{{$image->getImage('200x200')}}" alt=""/>
                 </a>
             </span>
+            @endforeach
         </div>
     </div>
+    @endforeach
 </div>
 
 

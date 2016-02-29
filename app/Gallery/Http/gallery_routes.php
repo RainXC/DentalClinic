@@ -18,6 +18,15 @@ Route::group(['middleware' => 'adminAccess'], function ()
 		'uses' => 'GalleryAdminController@uploadImage'
 	]);
 
+	Route::put('admin/gallery/setImagesPriority', [
+		'as' => 'gallery.setImagesPriority',
+		'uses' => 'GalleryAdminController@setImagesPriority'
+	]);
+	Route::delete('admin/gallery/deleteImage/{slug}', [
+		'as' => 'gallery.deleteImage',
+		'uses' => 'GalleryAdminController@deleteImage'
+	]);
+
 	Route::resource('admin/gallery', 'GalleryAdminController');
 
 });
