@@ -1,16 +1,20 @@
 <div class="content-section-b">
 
-    <div class="container">
+    <div class="container welcomeContainer">
 
         <div class="row">
             <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                <hr class="section-heading-spacer">
-                <div class="clearfix"></div>
-                <h2 class="section-heading">Мы рады приветствовать вас!</h2>
-                <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to download some of their awesome, free photoshop actions!</p>
+                <div class="animated mainArticle">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading"><?=$mainArticle->getH1()?></h2>
+                    <p class="lead">
+                        <?=$mainArticle->getText()?>
+                    </p>
+                </div>
             </div>
             <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                <img class="img-responsive img-rounded" src="/images/dental.jpg" alt="">
+                <img class="img-responsive img-rounded animated" src="/images/dental.jpg" alt="">
             </div>
         </div>
 

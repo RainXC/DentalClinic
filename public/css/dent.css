@@ -511,9 +511,24 @@ body,
     background: #E46653;
 }
 
+.animated {
+    visibility: hidden;
+}
+
+.slideInLeft,
+.slideInRight,
+.slideInUp,
+.slideInDown,
+.fadeInUp,
+.fadeInDown
+{
+    visibility: visible;
+}
+
 .most-useful-services .img-circle {
     margin: 0 auto;
     display: block;
+
 }
 
 .most-useful-services h2 {

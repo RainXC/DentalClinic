@@ -15,13 +15,15 @@
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('/bootstrap/dist/css/bootstrap-theme.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/animated.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/dent.css') }}" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Exo+2:400,700,500,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/js/knob.js"></script>
+    <script src="/js/waypoint.js"></script>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="/bootstrap/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -47,7 +49,6 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 <script src="/bootstrap/assets/js/vendor/holder.js"></script>

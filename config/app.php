@@ -147,6 +147,7 @@ return [
 		'App\Services\ServicesServiceProvider',
 		'App\Employees\EmployeesServiceProvider',
 		'App\Gallery\GalleryServiceProvider',
+		'App\Article\ArticleServiceProvider',
         'Intervention\Image\ImageServiceProvider',
 		'JildertMiedema\LaravelPlupload\LaravelPluploadServiceProvider',
 
