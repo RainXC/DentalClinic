@@ -1,5 +1,6 @@
 <?php namespace App\Employees\Http\Controllers;
 
+use App\Employees\Models\Category;
 use App\Employees\Models\EmployeeImageHandler;
 use App\Employees\Models\EmployeeImageUploader;
 use App\Employees\Models\EmployeesCategories;
@@ -60,11 +61,13 @@ class EmployeesAdminController extends BaseController
 		$employee     = new Noop();
 		$positions    = new Position();
 		$specialities = new Speciality();
+		$categories   = new Category();
 
 		return View::make('employees.admin.create', [
 			'employee'     => $employee,
 			'positions'    => $positions,
-			'specialities' => $specialities
+			'specialities' => $specialities,
+			'categories'   => $categories
 		]);
 	}
 
@@ -74,11 +77,13 @@ class EmployeesAdminController extends BaseController
 		$employee = $employees->findOrFail($id);
 		$positions    = new Position();
 		$specialities = new Speciality();
+		$categories   = new Category();
 
 		return View::make('employees.admin.edit', [
-			'employee'    => $employee,
+			'employee'     => $employee,
 			'positions'    => $positions,
-			'specialities' => $specialities
+			'specialities' => $specialities,
+			'categories'   => $categories
 		]);
 	}
 

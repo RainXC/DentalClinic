@@ -8,7 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Статья <a href="/admin/gallery/create/" class="btn btn-primary btn-sm">Добавить</a></h1>
+                <h1>Статья <a href="/admin/gallery/create/" class="btn btn-primary btn-sm">Создать</a></h1>
             </div>
         </div>
         <div class="row">

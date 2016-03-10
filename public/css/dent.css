@@ -519,11 +519,27 @@ body,
 .slideInRight,
 .slideInUp,
 .slideInDown,
+.bounce,
+.bounceIn,
+.bounceInLeft,
+.bounceInRight,
+.wobble,
+.tada,
+.swing,
+.shake,
+.rubberBand,
+.pulse,
+.flash,
+.lightSpeedIn,
+.fadeIn,
+.fadeInRight,
+.fadeInLeft,
 .fadeInUp,
 .fadeInDown
 {
     visibility: visible;
 }
+
 
 .most-useful-services .img-circle {
     margin: 0 auto;

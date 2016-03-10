@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServicesCategoriesTable extends Migration {
+class CreatePatientsCategoriesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateServicesCategoriesTable extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('services_categories', function(Blueprint $table)
+        Schema::create('patients_categories', function(Blueprint $table)
         {
             $table->increments('id');
 
@@ -33,7 +33,7 @@ class CreateServicesCategoriesTable extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('services_categories');
+        Schema::drop('patients_categories');
 	}
 
 }

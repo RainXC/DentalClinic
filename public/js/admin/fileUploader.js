@@ -28,6 +28,10 @@ fileUploader.init = function () {
         $(document.getElementById(file.id)).fadeOut();
     });
     uploader.bind('UploadComplete', function(up, file, response) {
+        if ( typeof response  == 'undefined' ) {
+            console.log('Something is wrong with image adding');
+            return false;
+        }
         location.reload();
     });
 };

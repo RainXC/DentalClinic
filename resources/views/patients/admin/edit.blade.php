@@ -12,16 +12,16 @@
             <div class="row">
                 <div class="col-sx-5 col-md-10">
                     <h1>
-                        Редактирование сотрудника
+                        Редактирование пациента
                         <button type="submit" class="btn btn-success btn-sm objectFormSubmit">Сохранить</button>
-                        <a href="{{url('/admin/employees')}}" class="btn btn-warning btn-sm">Отмена</a>
+                        <a href="{{url('/admin/patients')}}" class="btn btn-warning btn-sm">Отмена</a>
                         <a
                             id="browse"
                             class="btn btn-primary btn-sm"
                             href="javascript:"
-                            data-action="/admin/employees/uploadImage?objectId={{$employee->id}}"
+                            data-action="/admin/patients/uploadImage?objectId={{$patient->id}}"
                         >
-                            @if( $employee->image)
+                            @if( $patient->image)
                                 Изменить фото
                             @else
                                 Загрузить фото
@@ -31,10 +31,11 @@
                     </h1>
                 </div>
                 <div class="col-sx-5 col-md-2">
-                    <a href="{{$employee->getAvatar()}}" data-lightbox="lightbox" class="photoThumb">
-                        <img id="avatar" class="img-thumbnail" src="{{$employee->getAvatar()}}" alt="">
+                    <a href="{{$patient->getAvatar()}}" data-lightbox="lightbox" class="photoThumb">
+                        <img id="avatar" class="img-thumbnail" src="{{$patient->getAvatar()}}" alt="">
                     </a>
                 </div>
+
             </div>
         </div>
     </div>
@@ -42,16 +43,16 @@
         <div class="container">
             <p class="error bg-danger">Сообщение об ошибке</p>
             <p class="success bg-success">Сообщение об успехе</p>
-            <form class="form-horizontal objectForm" action="/admin/employees/{{$employee->id}}" method="post">
+            <form class="form-horizontal objectForm" action="/admin/patients/{{$patient->id}}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="_method" value="PUT">
-                <input type="hidden" name="id" value="{{$employee->id}}">
+                <input type="hidden" name="id" value="{{$patient->id}}">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Категория</label>
                     <div class="col-sm-10">
                         <select name="categoryId" class="form-control">
                             @foreach ($categories->get() as $category)
-                                <option value="{{$category->id}}" <?=$employee->categoryId==$category->id?'selected="selected"':''?>> {{$category->getName()}}</option>
+                                <option value="{{$category->id}}" <?=$patient->categoryId==$category->id?'selected="selected"':''?>> {{$category->getName()}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -59,57 +60,46 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Фамилия</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="lastname" value="{{$employee->lastname}}">
+                        <input type="text" class="form-control" name="lastname" value="{{$patient->getLastname()}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Имя</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="firstname" value="{{$employee->firstname}}">
+                        <input type="text" class="form-control" name="firstname" value="{{$patient->getFirstname()}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Отчество</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="patronymic" value="{{$employee->patronymic}}">
+                        <input type="text" class="form-control" name="patronymic" value="{{$patient->getPatronymic()}}">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Должность</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Место работы</label>
                     <div class="col-sm-10">
-                        <select name="positionId" class="form-control">
-                            @foreach ($positions->get() as $position)
-                                <option value="{{$position->id}}" <?=$employee->positionId==$position->id?'selected="selected"':''?>> {{$position->getName()}}</option>
-                            @endforeach
-                        </select>
+                        <input type="text" class="form-control" name="workFor" value="{{$patient->getWorkFor()}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Адрес</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="address" value="{{$patient->getAddress()}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Пол</label>
                     <div class="col-sm-10">
                         <select name="male" class="form-control">
-                            <option value="1" <?=$employee->male==1?'selected="selected"':''?>>Мужской</option>
-                            <option value="0" <?=$employee->male==0?'selected="selected"':''?>>Женский</option>
+                            <option value="1" <?=$patient->male==1?'selected="selected"':''?>>Мужской</option>
+                            <option value="0" <?=$patient->male==0?'selected="selected"':''?>>Женский</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Специальность</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Примечание</label>
                     <div class="col-sm-10">
-                        <ul>
-                            <?
-                            $specArray = [];
-                            foreach($employee->specialities as $spec){
-                                $specArray[] = $spec->id;
-                            }
-                            ?>
-                            @foreach($specialities->get() as $speciality)
-                                <li>
-                                    <input id="spec{{$speciality->id}}" type="checkbox" name="speciality[]" value="{{$speciality->id}}" <?=(in_array($speciality->id, $specArray))?'checked="checked"':'' ?>>
-                                    - <label for="spec{{$speciality->id}}">{{$speciality->getName()}}</label>
-                                </li>
-                            @endforeach
-                        </ul>
+                        <textarea name="note" class="form-control">{{$patient->getNote()}}</textarea>
                     </div>
                 </div>
             </form>

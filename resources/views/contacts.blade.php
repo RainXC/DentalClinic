@@ -14,13 +14,13 @@
     </div>
     <div class="content-section-b">
         <div class="container">
-            <div class="col-md-6">
+            <div class="col-md-6 worktime animated">
                 <h3>Понедельник - Пятница:</h3>
                 <h2 class="time">9:00-17:00</h2>
                 <h3>Суббота:</h3>
                 <h2 class="time">9:00-14:00</h2>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 phones animated">
                 <h3>Телефоны:</h3>
                 <h2 class="phone">0 69 643740</h2>
                 <h2 class="phone">0 79 943740</h2>
@@ -28,20 +28,20 @@
         </div>
     </div>
     <div class="content-section-a">
-        <div class="container">
+        <div class="container skype animated">
             <div class="col-md-6">
                 <h3>Скайп:</h3>
-                <h2 class="skype">zubkom3</h2>
+                <h2 class="skype">rusanna.dent</h2>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 email animated">
                 <h3>E-mail:</h3>
-                <h2 class="email">zubkom3@rambler.ru</h2>
+                <h2 class="email">rusanna.dent@gmail.com</h2>
             </div>
         </div>
     </div>
     <div class="content-section-b">
         <div class="container">
-            <form name="form" class="contactsForm" action="/contacts/ajaxSendMessage/">
+            <form name="form" class="contactsForm animated" action="/contacts/ajaxSendMessage/">
                 <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                 <div class="col-md-12">
                     <h2>Написать нам сообщение: </h2>
@@ -99,7 +99,9 @@
         </div>
     </div>
     <div class="row">
-        <div id="map"></div>
+        <div class="col-md-12">
+            <div id="map"></div>
+        </div>
     </div>
 
 @endsection

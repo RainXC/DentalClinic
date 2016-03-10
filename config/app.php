@@ -146,6 +146,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 		'App\Services\ServicesServiceProvider',
 		'App\Employees\EmployeesServiceProvider',
+		'App\Patients\PatientsServiceProvider',
 		'App\Gallery\GalleryServiceProvider',
 		'App\Article\ArticleServiceProvider',
         'Intervention\Image\ImageServiceProvider',

@@ -7,9 +7,9 @@
 <div class="content-section-a">
     <div class="container">
         <h1>
-            Наши сотрудники
-            <a href="/admin/employees/create/" class="btn btn-primary btn-sm">Создать</a>
-            <a href="/admin/employees/categories/" class="btn btn-warning btn-sm">Редактировать категории</a>
+            Наши пациенты
+            <a href="/admin/patients/create/" class="btn btn-primary btn-sm">Создать</a>
+            <a href="/admin/patients/categories/" class="btn btn-warning btn-sm">Редактировать категории</a>
         </h1>
     </div>
 </div>
@@ -19,43 +19,43 @@
         <thead>
         <tr>
             <th>№</th>
-            <th>Фото</th>
             <th>ФИО</th>
-            <th>Должность</th>
-            <th>Специальности</th>
+            <th>Адрес</th>
+            <th>Место работы</th>
+            <th>Пол</th>
+            <th>Дата рождения</th>
             <th>Дата регистрации</th>
             <th>Действия</th>
         </tr>
         </thead>
         <tbody>
         <? $count = 0; ?>
-        @foreach ($employees->get() as $employee)
-            <tr class="listRow" id="listRow{{$employee->id}}">
+        @foreach ($patients->get() as $patient)
+            <tr class="listRow" id="listRow{{$patient->id}}">
                 <td>{{++$count}}</td>
                 <td>
-                    <img src="{{$employee->getAvatar()}}" height="50">
+                    {{$patient->getName()}}
                 </td>
                 <td>
-                    {{$employee->getName()}}
+                    {{$patient->getAddress()}}
                 </td>
                 <td>
-                    {{$employee->position->getName()}}
+                    {{$patient->getWorkFor()}}
                 </td>
                 <td>
-                    <ul>
-                        @foreach ($employee->specialities as $speciality)
-                            <li>{{$speciality->getName()}}</li>
-                        @endforeach
-                    </ul>
+                    {{$patient->isMale()?'Мужской':'Женский'}}
                 </td>
                 <td>
-                    {{$employee->created_at}}
+                    {{$patient->getBirthdate()}}
                 </td>
                 <td>
-                    <a href="{{url('/admin/employees/'.$employee->id)}}/edit" class="btn btn-primary btn-sm">Редактировать</a>
+                    {{$patient->created_at}}
+                </td>
+                <td>
+                    <a href="{{url('/admin/patients/'.$patient->id)}}/edit" class="btn btn-primary btn-sm">Редактировать</a>
                     <a
                         class="btn btn-danger btn-sm delete"
-                        data-action="/admin/employees/{{$employee->id}}"
+                        data-action="/admin/patients/{{$patient->id}}"
                         data-post="_method=DELETE&_token={{ csrf_token() }}"
                         data-confirm="Удалить запись?"
                     >Удалить</a>

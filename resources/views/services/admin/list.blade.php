@@ -8,13 +8,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Услуги <a href="/admin/services/create/" class="btn btn-primary btn-sm">Добавить</a></h1>
+                <h1>
+                    Услуги
+                    <a href="/admin/services/create/" class="btn btn-primary btn-sm">Создать</a>
+                    <a href="/admin/services/categories/" class="btn btn-warning btn-sm">Редактировать категории</a>
+                </h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <p class="additional">
-                    Раздел предназначен для управлеия услугами. Вы можете создавать, редактировать, удалять услуги.
+                    Раздел предназначен для управления услугами. Вы можете создавать, редактировать, удалять услуги.
                     Этот радел поможет сохранять цены в актуальном состоянии.
                 </p>
             </div>

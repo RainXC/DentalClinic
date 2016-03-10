@@ -1,4 +1,4 @@
-<?php namespace App\Services\Models;
+<?php namespace App\Patients\Models;
 
 use Eloquent;
 use App\User;
@@ -8,7 +8,7 @@ use App\User;
  *
  * @property \App\User                $author
  */
-class ServicesCategories {
+class PatientsCategories {
 
     /**
      * @var Category

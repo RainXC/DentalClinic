@@ -8,14 +8,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Галерея <a href="/admin/gallery/create/" class="btn btn-primary btn-sm">Создать</a></h1>
+                <h1>
+                    Категории
+                    <a href="{{url($urlRoot).'/categories/create'}}" class="btn btn-primary btn-sm">Создать</a>
+                    <a href="{{url($urlRoot)}}" class="btn btn-danger btn-sm">Назад</a>
+                </h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
                 <p class="additional">
-                    Раздел предназначен для управлеия альбомами. Вы можете создавать, редактировать, удалять альбомы.
-                    В каждый альбом вы можете загрузить неограниченное количество фотографий.
+                    Раздел предназначен для управления категориями. Вы можете создавать, редактировать, удалять категории.
                 </p>
             </div>
         </div>
@@ -35,21 +38,21 @@
         </thead>
         <tbody>
         <? $count = 0; ?>
-        @foreach ($albums->get() as $album)
-            <tr class="listRow" id="listRow{{$album->id}}">
+        @foreach ($categories->get() as $category)
+            <tr class="listRow" id="listRow{{$category->id}}">
                 <td>{{++$count}}</td>
-                <td>{{$album->getName()}}</td>
+                <td>{{$category->getName()}}</td>
                 <td>
-                    {{$album->getDescription()?$album->getDescription():'Описание отсутствует'}}
+                    {{$category->getDescription()?$category->getDescription():'Описание отсутствует'}}
                 </td>
                 <td>
-                    {{$album->created_at}}
+                    {{$category->created_at}}
                 </td>
                 <td>
-                    <a href="{{url('/admin/gallery/'.$album->id)}}/edit" class="btn btn-primary btn-sm">Редактировать</a>
+                    <a href="{{url($urlRoot.'/categories/'.$category->id)}}/edit" class="btn btn-primary btn-sm">Редактировать</a>
                     <a
                         class="btn btn-danger btn-sm delete"
-                        data-action="/admin/gallery/{{$album->id}}"
+                        data-action="{{url($urlRoot.'/categories/'.$category->id)}}"
                         data-post="_method=DELETE&_token={{ csrf_token() }}"
                         data-confirm="Удалить запись?"
                     >Удалить</a>

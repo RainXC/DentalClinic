@@ -12,6 +12,8 @@ Route::get('employees/{slug}', [
 
 Route::group(['middleware' => 'adminAccess'], function () {
 
+	Route::resource('admin/employees/categories', 'CategoriesAdminController');
+
 	Route::put('admin/employees/uploadImage', [
 		'as' => 'employees.uploadImage',
 		'uses' => 'EmployeesAdminController@uploadImage'

@@ -1,4 +1,4 @@
-<?php namespace App\Employees\Models;
+<?php namespace App\Patients\Models;
 
 use Eloquent;
 use App\User;
@@ -9,18 +9,18 @@ use Illuminate\Support\Facades\DB;
  *
  * @property \App\User                $author
  */
-class Category extends \App\Category {
+class Category extends \App\Category{
 
     /**
      * @var string
      */
-    protected $table = 'employees_categories';
+    protected $table = 'patients_categories';
 
     /**
-     * @return Employees
+     * @return Patients
      */
     public function items()
     {
-        return $this->hasMany(Employee::class, 'categoryId', 'id');
+        return $this->hasMany(Patient::class, 'categoryId', 'id');
     }
 }

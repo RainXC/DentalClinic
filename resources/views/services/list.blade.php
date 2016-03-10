@@ -1,6 +1,8 @@
 @extends('skelet')
 
 @section('content')
+<script src="/js/services.js"></script>
+
 <div class="content-page-header">
     <div class="container">
         <div class="row pageHeader">
@@ -27,14 +29,14 @@
                             <div class="container">
                                 <h3 id="{{$subCategory->alias}}">{{$subCategory->name}}</h3>
                                     @foreach ($subCategory->items as $service)
-                                        <div class="container marginTopBottomNm lightBottomBorder service">
+                                        <div class="container marginTopBottomNm lightBottomBorder service animated">
                                             <div class="col-md-9">
                                                 <h4>{{$service->name}}</h4>
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="priceBlock">
                                                     <span class="price">{{$service->price}} лей</span>
-                                                    <span class="measurement">/ {{$service->measure}} {{$service->measurement->getNameByValue($service->measure)}}</span>
+                                                    <span class="measurement">/ {{$service->measure}} @if($service->measurement){{$service->measurement->getNameByValue($service->measure)}}@endif</span>
                                                 </div>
                                             </div>
                                         </div>

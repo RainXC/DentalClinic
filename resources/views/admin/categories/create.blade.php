@@ -12,9 +12,9 @@
             <div class="row">
                 <div class="col-sx-5 col-md-10">
                     <h1>
-                        Редактирование услуги
+                        Добавление категории
                         <button type="submit" class="btn btn-success btn-sm objectFormSubmit">Сохранить</button>
-                        <a href="{{url('/admin/services')}}" class="btn btn-warning btn-sm">Отмена</a>
+                        <a href="{{url($urlRoot).'/categories'}}" class="btn btn-danger btn-sm">Отмена</a>
                     </h1>
                 </div>
             </div>
@@ -24,26 +24,26 @@
         <div class="container">
             <p class="error bg-danger">Сообщение об ошибке</p>
             <p class="success bg-success">Сообщение об успехе</p>
-            <form class="form-horizontal objectForm" action="/admin/services/{{$service->id}}" method="post">
+            <form class="form-horizontal objectForm" action="{{url($urlRoot).'/categories'}}" method="post" data-post-action="reload">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="_method" value="PUT">
-                <input type="hidden" name="id" value="{{$service->id}}">
+                <input type="hidden" name="_method" value="POST">
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Категория</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Родительская категория</label>
                     <div class="col-sm-10">
-                        <select name="categoryId" class="form-control">
+                        <select name="parentId" class="form-control">
+                            <option value="0">Нет родителя</option>
                             @foreach($categories->get() as $categoryItem)
                                 @if( !$categoryItem->parentId )
-                                    <option value="{{$categoryItem->id}}" @if($categoryItem->id==$service->categoryId)selected="selected"@endif>
+                                    <option value="{{$categoryItem->id}}">
                                         {{$categoryItem->getName()}}
                                     </option>
                                     @foreach($categoryItem->subCategories as $subCategory)
                                         @if( !$categoryItem->parentId )
-                                            <option value="{{$subCategory->id}}" @if($subCategory->id==$service->categoryId)selected="selected"@endif>
+                                            <option value="{{$subCategory->id}}">
                                                 &nbsp;&nbsp;&nbsp;|- {{$subCategory->getName()}}
                                             </option>
                                             @foreach($subCategory->subCategories as $nextLevel)
-                                                <option value="{{$nextLevel->id}}" @if($nextLevel->id==$service->categoryId)selected="selected"@endif>
+                                                <option value="{{$nextLevel->id}}">
                                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|- {{$nextLevel->getName()}}
                                                 </option>
                                             @endforeach
@@ -57,37 +57,19 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Название</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="name" value="{{$service->getName()}}">
+                        <input type="text" class="form-control" name="name" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Алиас</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="alias" value="">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="description" class="col-sm-2 control-label">Описание</label>
                     <div class="col-sm-10">
-                        <textarea id="description" name="description" class="form-control">{{$service->getDescription()}}</textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Цена</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="price" value="{{$service->getPrice()}}">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Количество</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" name="measure" value="{{$service->getMeasure()}}">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Еденица измерения</label>
-                    <div class="col-sm-10">
-                        <select name="measurementId" class="form-control">
-                            @foreach($measurements->get() as $measurement)
-                                <option value="{{$measurement->id}}" @if($measurement->id==$service->measurementId)selected="selected"@endif>
-                                    {{$measurement->name}}
-                                </option>
-                            @endforeach
-                        </select>
+                        <textarea id="description" name="description" class="form-control"></textarea>
                     </div>
                 </div>
             </form>

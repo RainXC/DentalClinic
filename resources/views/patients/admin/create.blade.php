@@ -9,9 +9,9 @@
     <div class="content-section-a">
         <div class="container">
             <h1>
-                Новый сотрудник
+                Новый пациент
                 <button type="submit" class="btn btn-success btn-sm objectFormSubmit">Сохранить</button>
-                <a href="{{url('/admin/employees')}}" class="btn btn-warning btn-sm">Отмена </a>
+                <a href="{{url('/admin/patients')}}" class="btn btn-warning btn-sm">Отмена </a>
             </h1>
         </div>
     </div>
@@ -19,7 +19,7 @@
         <div class="container">
             <p class="error bg-danger">Сообщение об ошибке</p>
             <p class="success bg-success">Сообщение об успехе</p>
-            <form class="form-horizontal objectForm" action="/admin/employees" method="post" data-post-action="reload">
+            <form class="form-horizontal objectForm" action="/admin/patients" method="post" data-post-action="reload">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="_method" value="POST">
                 <div class="form-group">
@@ -51,13 +51,15 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Должность</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Место работы</label>
                     <div class="col-sm-10">
-                        <select name="positionId" class="form-control">
-                            @foreach ($positions->get() as $position)
-                                <option value="{{$position->id}}"> {{$position->getName()}}</option>
-                            @endforeach
-                        </select>
+                        <input type="text" class="form-control" name="workFor" value="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Адрес</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="address" value="">
                     </div>
                 </div>
                 <div class="form-group">
@@ -70,16 +72,9 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Специальность</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Примечание</label>
                     <div class="col-sm-10">
-                        <ul>
-                            @foreach($specialities->get() as $speciality)
-                                <li>
-                                    <input id="spec{{$speciality->id}}" type="checkbox" name="speciality[]" value="{{$speciality->id}}" >
-                                    - <label for="spec{{$speciality->id}}">{{$speciality->getName()}}</label>
-                                </li>
-                            @endforeach
-                        </ul>
+                        <textarea name="note" class="form-control"></textarea>
                     </div>
                 </div>
             </form>

@@ -45,6 +45,16 @@ $(function(){
     });
 
 
+    $('.worktime, .phones, .skype, .email').waypoint(function(){
+        $(this.element).addClass('bounceInLeft');
+    },{offset: '100%'});
+
+    $('.contactsForm').waypoint(function(){
+        $(this.element).addClass('bounce');
+    },{offset: '60%'});
+
+
+
     function initialize() {
         var myLatlng = new google.maps.LatLng(46.302763,28.658450);
         var mapOptions = {
