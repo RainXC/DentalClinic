@@ -21,8 +21,7 @@
             </div>
             <div class="col-md-6">
                 <p>
-                    Мы начали свою работу 12 октября 2001 г.
-                    В нашей клинике используются последние технологии.
+                    {{$history->getText()}}
                 </p>
             </div>
         </div>
@@ -30,8 +29,8 @@
     <div class="content-section-a">
         <div class="container">
             <div class="col-md-6">
-                <h3>Набор персонала</h3>
-                <p>Мы рады новым людям в нашем колективе.</p>
+                <h3>{{$recruitment->getName()}}</h3>
+                <p>{{$recruitment->getText()}}</p>
                 <p></p>
             </div>
             <div class="col-md-6">
@@ -45,9 +44,8 @@
                 <div class="contactsImage"><img class="img-responsive" src="/images/about/partnership.jpg" /></div>
             </div>
             <div class="col-md-6">
-                <h3>Сотрудничество</h3>
-                <p>Мы имеем опыт сотрудничества с другими стоматологическими клиниками. Это позволяет обмениваться опытом, новыми технологиями и повышать свой профессионализм.</p>
-                <p>Если вы хотите предложить сотрудничество свяжитесь по одному из телефонов указанных на странице <a href="/contacts/">контактов</a> или напишите сообщение</p>
+                <h3>{{$partnership->getName()}}</h3>
+                <p>{!! $partnership->getText() !!}</p>
             </div>
         </div>
     </div>

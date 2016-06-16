@@ -1,4 +1,4 @@
-<?php namespace App\Gallery\Models;
+<?php namespace App\Visits\Models;
 
 use App\Images\ObjectImage;
 use App\Images\ImageSizes;
@@ -14,30 +14,32 @@ class Image extends Eloquent {
 
     private $owner;
     private $handler;
+
+    public function __construct(){}
     /**
      * @var string
      */
-    protected $table = 'albums_images';
+    protected $table = 'visits_images';
 
     /**
      * @var string
      */
-    protected $folder = '/data/images/gallery/';
+    protected $folder = '/data/images/visits/';
 
-	/**
-	 * @const string
-	 */
-	const PUBLISHED_AT = 'published_at';
+    /**
+     * @const string
+     */
+    const PUBLISHED_AT = 'published_at';
 
-	/**
-	 * @var array
-	 */
-	protected $guarded = ['id', 'author_id'];
+    /**
+     * @var array
+     */
+    protected $guarded = ['id', 'author_id'];
 
-	/**
-	 * @var array
-	 */
-	protected $dates = ['deleted_at', self::PUBLISHED_AT];
+    /**
+     * @var array
+     */
+    protected $dates = ['deleted_at', self::PUBLISHED_AT];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -138,7 +140,7 @@ class Image extends Eloquent {
     public function getHandler()
     {
         if ( !$this->handler ) {
-            $this->handler = new GalleryImageHandler($this->getOwner());
+            $this->handler = new VisitImageHandler($this->getOwner());
         }
         return $this->handler;
     }
@@ -146,8 +148,8 @@ class Image extends Eloquent {
     private function getOwner()
     {
         if (!$this->owner) {
-            $albums = new Album();
-            $this->owner = $albums->find($this->objectId);
+            $visits = new Visit();
+            $this->owner = $visits->find($this->objectId);
         }
 
         return $this->owner;

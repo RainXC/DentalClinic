@@ -7,7 +7,7 @@
 <div class="content-section-a">
     <div class="container">
         <h1>
-            Наши пациенты
+            Пациенты
             <a href="/admin/patients/create/" class="btn btn-primary btn-sm">Создать</a>
             <a href="/admin/patients/categories/" class="btn btn-warning btn-sm">Редактировать категории</a>
         </h1>

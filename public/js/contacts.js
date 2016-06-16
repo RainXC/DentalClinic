@@ -51,7 +51,7 @@ $(function(){
 
     $('.contactsForm').waypoint(function(){
         $(this.element).addClass('bounce');
-    },{offset: '60%'});
+    },{offset: '80%'});
 
 
 

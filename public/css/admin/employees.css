@@ -126,3 +126,8 @@ h3 .additional {
 #sortable li.active span.controls {
     opacity: 1;
 }
+
+.additional {
+    font-size: 11px;
+    color: #999999;
+}

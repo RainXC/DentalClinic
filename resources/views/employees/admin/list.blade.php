@@ -7,7 +7,7 @@
 <div class="content-section-a">
     <div class="container">
         <h1>
-            Наши сотрудники
+            Сотрудники
             <a href="/admin/employees/create/" class="btn btn-primary btn-sm">Создать</a>
             <a href="/admin/employees/categories/" class="btn btn-warning btn-sm">Редактировать категории</a>
         </h1>

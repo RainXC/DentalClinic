@@ -3,7 +3,15 @@
 @section('content')
     <link rel="stylesheet" href="/css/admin/employees.css">
     <script src="/js/admin/employee.js"></script>
+    <script src="/js/admin/natives.js"></script>
+    <script src="/js/admin/objectView.class.js"></script>
     <script src="/js/plupload/plupload.full.min.js"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+    <script>
+        $('textarea').ckeditor();
+        // $('.textarea').ckeditor(); // if class is prefered.
+    </script>
     {{--<script type="text/javascript" src="/js/plupload/jquery.ui.plupload/jquery.ui.plupload.js"></script>--}}
     <script src="/js/plupload/i18n/ru.js"></script>
 
@@ -20,56 +28,78 @@
         <div class="container">
             <p class="error bg-danger">Сообщение об ошибке</p>
             <p class="success bg-success">Сообщение об успехе</p>
-            <form class="form-horizontal objectForm" action="/admin/gallery/{{$album->id}}" method="post">
+            <form class="form-horizontal objectForm" action="/admin/articles/{{$article->id}}" method="post">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="_method" value="PUT">
-                <input type="hidden" name="id" value="{{$album->id}}">
+                <input type="hidden" name="id" value="{{$article->id}}">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Категория</label>
+                    <div class="col-sm-10">
+                        <select name="categoryId" class="form-control">
+                            <option value="0">Не выбрана</option>
+                            @foreach( $categories->get() as $category )
+                                <option value="{{$category->id}}" @if($category->id==$article->categoryId)selected="selected"@endif>{{$category->getName()}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Статус</label>
+                    <div class="col-sm-10">
+                        <select name="statusId" class="form-control">
+                            <option value="0">Не выбран</option>
+                            @foreach( $statuses->get() as $status )
+                                <option value="{{$status->id}}" @if($status->id==$article->statusId)selected="selected"@endif>{{$status->getName()}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Название</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" name="name" value="{{$album->getName()}}">
+                        <input type="text" class="form-control" name="name" value="{{$article->getName()}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Алиас</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="alias" value="{{$article->getAlias()}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Заголовок h1</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="h1" value="{{$article->getH1()}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Описание</label>
                     <div class="col-sm-10">
-                        <textarea name="description" class="form-control">{{$album->getDescription()}}</textarea>
+                        <textarea name="description" class="form-control">{{$article->getDescription()}}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Фото</label>
+                    <label for="inputEmail3" class="col-sm-2 control-label">Текст</label>
                     <div class="col-sm-10">
-                        <div id="container">
-                            <a
-                                id="browse"
-                                class="btn btn-primary btn-sm"
-                                href="javascript:;"
-                                data-action="/admin/gallery/uploadImage?objectId={{$album->id}}"
-                            >Загрузить фото</a>
-                            <div id="fileDetails"></div>
-                        </div>
-                        <div class="images">
-                            <ul id="sortable" data-sorting-action="/admin/gallery/setImagesPriority/?objectId={{$album->id}}">
-                                @foreach($album->images as $image)
-                                <li data-id="{{$image->id}}" data-priority="{{$image->priority}}">
-                                    <span class="imageContainer">
-                                        <a href="{{$image->getImage('640x480')}}" data-lightbox="lightbox">
-                                            <img src="{{$image->getImage('640x480')}}" alt="" width="150">
-                                        </a>
-                                    </span>
-                                    <span class="controls">
-                                        {{--<span class="removeButton btn btn-xs btn-primary">Изменить</span>--}}
-                                        <span
-                                            class="removeButton btn btn-xs btn-danger"
-                                            data-action="/admin/gallery/deleteImage/{{$image->id}}"
-                                            data-post="_token={{csrf_token()}}&_method=DELETE"
-                                        >Удалить</span>
-                                    </span>
-                                </li>
-                                @endforeach
-                            </ul>
-
-                        </div>
+                        <textarea name="text" class="form-control">{{$article->getText()}}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Meta Title</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="metaTitle" value="{{$article->getMetaTitle()}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Meta Keywords</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="metaKeywords" value="{{$article->getMetaKeywords()}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Meta Description</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="metaDescription" value="{{$article->getMetaDescription()}}">
                     </div>
                 </div>
             </form>

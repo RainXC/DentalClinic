@@ -1,11 +1,5 @@
 <?php
 
-// ===== Patients
-Route::get('patients', [
-	'as' => 'patients.all',
-	'uses' => 'PatientsController@showAll'
-]);
-
 Route::group(['middleware' => 'adminAccess'], function ()
 {
 
@@ -17,8 +11,3 @@ Route::group(['middleware' => 'adminAccess'], function ()
 	Route::resource('admin/patients', 'PatientsAdminController');
 
 });
-
-Route::get('patients/{slug}', [
-	'as' => 'patients.show',
-	'uses' => 'PatientsController@show'
-]);

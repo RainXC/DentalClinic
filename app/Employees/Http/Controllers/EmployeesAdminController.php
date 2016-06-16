@@ -109,6 +109,7 @@ class EmployeesAdminController extends BaseController
 		$employee->firstname  = Input::get('firstname');
 		$employee->patronymic = Input::get('patronymic');
 		$employee->positionId = Input::get('positionId');
+		$employee->categoryId = Input::get('categoryId');
 		$employee->male       = Input::get('male');
 		$employee->save();
 		if ( Input::get('speciality') ) {
@@ -127,6 +128,7 @@ class EmployeesAdminController extends BaseController
 		$employee->firstname  = Input::get('firstname');
 		$employee->patronymic = Input::get('patronymic');
 		$employee->positionId = Input::get('positionId');
+		$employee->categoryId = Input::get('categoryId');
 		$employee->male       = Input::get('male');
 
 		if ( Input::get('speciality') ) {

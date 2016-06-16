@@ -2,7 +2,7 @@
 
 @section('content')
 <script type="text/javascript" src="/js/gallery.js"></script>
-<script src="/js/lightbox/jquery-1.11.0.min.js"></script>
+{{--<script src="/js/lightbox/jquery-1.11.0.min.js"></script>--}}
 <script src="/js/lightbox/lightbox.min.js"></script>
 <link href="/js/lightbox/css/lightbox.css" rel="stylesheet" />
 <div class="content-page-header">
@@ -21,7 +21,7 @@
         <h3 class="albumHead">{{$album->getName()}}</h3>
         <div class="albumImages">
             @foreach( $album->images as $image )
-            <span ng-repeat="image in album.images | filter:query">
+            <span class="animated">
                 <a href="{{$image->getImage('1024x768')}}" data-lightbox="{{$album->getName()}}">
                     <img src="{{$image->getImage('200x200')}}" alt=""/>
                 </a>

@@ -47,6 +47,16 @@ class Employee extends Eloquent implements Imaginable {
         return $this->lastname.' '.$this->firstname.' '.$this->patronymic;
     }
 
+    /**
+     * @return string
+     */
+    public function getShortName()
+    {
+        $patronymic = mb_substr($this->patronymic, 0, 1);
+        $firstname  = mb_substr($this->firstname, 0, 1);
+        return $this->lastname.' '.$firstname.'. '.$patronymic.'.';
+    }
+
     public function specialities()
     {
         return $this->belongsToMany('App\Employees\Models\Speciality', 'employees_specialities', 'employeeId', 'specialityId');

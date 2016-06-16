@@ -8,32 +8,10 @@ use App\User;
  *
  * @property \App\User                $author
  */
-class Status extends Eloquent{
+class Status extends \App\Status{
 
     /**
      * @var string
      */
-    protected $table = 'services_statuses';
-	/**
-	 * @var array
-	 */
-	protected $guarded = ['id', 'author_id'];
-
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function author()
-	{
-		return $this->belongsTo(User::class, 'author_id');
-	}
-
-	/**
-	 * @param $query
-	 * @return mixed
-	 */
-	public function scopeWithAuthor($query)
-	{
-		return $query->with('author');
-	}
-
+    protected $table = 'patients_statuses';
 }

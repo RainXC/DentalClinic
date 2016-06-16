@@ -1,12 +1,14 @@
-<?php namespace App\Services\Repositories;
+<?php namespace App\Patients\Repositories;
 
-use App\Services\Models\Service;
+use App\Core\Repositories\AbstractRepository;
+use App\Patients\Models\Patient;
 
-class ServiceRepo extends AbstractRepository {
+class PatientRepo extends AbstractRepository
+{
 
-	public function __construct(Service $Service)
+	public function __construct($patient)
 	{
-		$this->model = $Service;
+		$this->model = $patient;
 	}
 
 	/**
@@ -30,7 +32,7 @@ class ServiceRepo extends AbstractRepository {
 	 */
 	public function getBySlug($slug)
 	{
-		$Service = $this->model->where('slug', $slug)->with('author')->withComments()->firstOrFail();
+		$Service = $this->model->where('slug', $slug)->with('author')->firstOrFail();
 
 		return $Service;
 	}
@@ -44,6 +46,40 @@ class ServiceRepo extends AbstractRepository {
 	public function getLastServices($num = 10)
 	{
 		return $this->model->notDraft()->withAuthor()->orderByDatePublished()->limit($num)->get();
+	}
+
+
+	public function getByPhone($phone)
+	{
+		$patients = $this->model->with('category', 'status');
+
+		$phone = ltrim($phone, "0");
+		$phone = ltrim($phone, "+373");
+		$phone = ltrim($phone, " ");
+		$patients->where('phone', 'LIKE', '%'.$phone.'%' );
+
+		return $patients;
+	}
+
+	public function getByFirstname( $firstname )
+	{
+		$patients = $this->model->with('category', 'status')->where('firstname', 'LIKE', $firstname.'%' );
+
+		return $patients;
+	}
+
+	public function getByLastname( $lastname )
+	{
+		$patients = $this->model->with('category', 'status')->where('lastname', 'LIKE', $lastname.'%' );
+
+		return $patients;
+	}
+
+	public function getByPatronymic( $patronymic )
+	{
+		$patients = $this->model->with('category', 'status')->where('patronymic', 'LIKE', $patronymic.'%' );
+
+		return $patients;
 	}
 
 	/**

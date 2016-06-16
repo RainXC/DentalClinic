@@ -13,16 +13,16 @@ class Noop
 {
     public function __get($name)
     {
-        return $this;
+        return '';
     }
 
     public function __set($name, $value)
     {
-        return $this;
+        return '';
     }
 
     public function __call($name, $arguments)
     {
-        return $this;
+        return '';
     }
 }

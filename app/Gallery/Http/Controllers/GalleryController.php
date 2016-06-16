@@ -12,14 +12,13 @@ class GalleryController extends BaseController {
 
 	public function showAll()
 	{
-		return View::make('gallery.list', [ 'albums' => Album::all() ]);
+		$albums = new Album();
+		return View::make('gallery.list', [ 'albums' => $albums->where('statusId', '=', 1)->get() ]);
 	}
 
     public function showJson()
     {
-//        var_dump(1);
         return response()->json(Album::with('images')->get()->toArray());
-//        return Response::json(Album::all());
     }
 
     public function getImage($resize, $id)

@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactsRequest;
+use App\Views\AboutView;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -16,16 +17,6 @@ class ArticlesController extends Controller {
 	| controllers, you are free to modify or remove it as you desire.
 	|
 	*/
-
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('guest');
-	}
 
 	/**
 	 * Shown the contacts page
@@ -44,7 +35,8 @@ class ArticlesController extends Controller {
 	 */
 	public function about()
 	{
-		return view('about');
+		$view = new AboutView();
+		return $view->printTemplate();
 	}
 
     /**

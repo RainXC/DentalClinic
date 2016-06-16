@@ -18,7 +18,7 @@ class ArticleServiceProvider extends ServiceProvider {
 	{
 		$router->group(['namespace'=>'App\Article\Http\Controllers'], function()
 		{
-			include 'Http' . DIRECTORY_SEPARATOR . 'articles_routes.php';
+			include 'Http' . DIRECTORY_SEPARATOR . 'article_routes.php';
 		});
 	}
 }

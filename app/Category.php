@@ -11,31 +11,31 @@ use Illuminate\Support\Facades\DB;
  */
 class Category extends Eloquent{
 
-	/**
-	 * @var array
-	 */
-	protected $guarded = ['id', 'author_id'];
+    /**
+     * @var array
+     */
+    protected $guarded = ['id', 'author_id'];
     /**
      * @var array
      */
     protected $subCategoriesArray = [];
 
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function author()
-	{
-		return $this->belongsTo(User::class, 'author_id');
-	}
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'author_id');
+    }
 
-	/**
-	 * @param $query
-	 * @return mixed
-	 */
-	public function scopeWithAuthor($query)
-	{
-		return $query->with('author');
-	}
+    /**
+     * @param $query
+     * @return mixed
+     */
+    public function scopeWithAuthor($query)
+    {
+        return $query->with('author');
+    }
 
     /**
      * @return Categories
@@ -76,5 +76,10 @@ class Category extends Eloquent{
     public function getAlias()
     {
         return $this->alias;
+    }
+
+    public function getColor()
+    {
+        return $this->color;
     }
 }

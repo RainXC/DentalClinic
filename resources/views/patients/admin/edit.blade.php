@@ -58,6 +58,16 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Статус</label>
+                    <div class="col-sm-10">
+                        <select name="statusId" class="form-control">
+                            @foreach ($statuses->get() as $status)
+                                <option value="{{$status->id}}" <?=$patient->statusId==$status->id?'selected="selected"':''?>> {{$status->getName()}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Фамилия</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="lastname" value="{{$patient->getLastname()}}">
@@ -73,6 +83,24 @@
                     <label for="inputEmail3" class="col-sm-2 control-label">Отчество</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="patronymic" value="{{$patient->getPatronymic()}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Дата рождения</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" name="birthdate" value="{{$patient->getBirthdate()}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Телефон</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="phone" value="{{$patient->getPhone()}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">E-mail</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="email" value="{{$patient->getEmail()}}">
                     </div>
                 </div>
                 <div class="form-group">

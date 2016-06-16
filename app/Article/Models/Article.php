@@ -1,30 +1,16 @@
 <?php namespace App\Article\Models;
 
-use App\Gallery\Models\Image;
+use App\Noop;
+use App\User;
 use Eloquent;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Gallery
  *
  */
-class Article extends Eloquent implements \App\Interfaces\Imaginable
+class Article extends Model
 {
-
-    public function getImagesTable()
-    {
-        return 'articles_images';
-    }
-
-    public function getFolder()
-    {
-        return '/data/images/article/';
-    }
-
-    public function getPath()
-    {
-        return '/images/article/';
-    }
-
 	/**
 	 * @const string
 	 */
@@ -45,8 +31,21 @@ class Article extends Eloquent implements \App\Interfaces\Imaginable
 	 */
 	public function author()
 	{
-		return $this->belongsTo(User::class, 'author_id');
+		return $this->belongsTo(User::class, 'author_id', 'id');
 	}
+
+    /**
+     * @return mixed
+     */
+    public function status()
+    {
+        return $this->hasOne(Status::class, 'id', 'statusId');
+    }
+
+    public function category()
+    {
+        return $this->hasOne(Category::class, 'id', 'categoryId');
+    }
 
 	/**
 	 * @param $query
@@ -56,14 +55,6 @@ class Article extends Eloquent implements \App\Interfaces\Imaginable
 	{
 		return $query->with('author');
 	}
-
-    /**
-     * @return hasMany
-     */
-    public function images()
-    {
-        return $this->hasMany(Image::class, 'objectId', 'id')->orderBy('priority', 'ASC');
-    }
 
     /**
      * @return string
@@ -79,6 +70,14 @@ class Article extends Eloquent implements \App\Interfaces\Imaginable
     public function getAlias()
     {
         return $this->alias;
+    }
+
+    /**
+     * @return string
+     */
+    public function getH1()
+    {
+        return $this->h1;
     }
 
     /**
@@ -100,23 +99,38 @@ class Article extends Eloquent implements \App\Interfaces\Imaginable
     /**
      * @return string
      */
-    public function getH1()
+    public function getMetaTitle()
     {
-        return $this->h1;
+        return $this->metaTitle;
     }
 
-    public function delete()
+    /**
+     * @return string
+     */
+    public function getMetaKeywords()
     {
-        if ( $this->images->count() > 0 ) {
-            $res = false;
-            foreach ( $this->images as $image ) {
-                $res = $image->remove();
-            }
-            if ( $res == false ) {
-                return false;
-            }
-        }
+        return $this->metaKeywords;
+    }
 
-        return parent::delete();
+    /**
+     * @return string
+     */
+    public function getMetaDescription()
+    {
+        return $this->metaDescription;
+    }
+
+    public function nextArticle()
+    {
+        return Article::where('id', '>', $this->id)
+            ->orderBy('id', 'ASC')
+            ->first();
+    }
+
+    public function prevArticle()
+    {
+        return Article::where('id', '<', $this->id)
+            ->orderBy('id', 'ASC')
+            ->first();
     }
 }

@@ -7,6 +7,7 @@ use App\Patients\Models\PatientsCategories;
 use App\Patients\Models\Position;
 use App\Patients\Models\Speciality;
 use App\Noop;
+use App\Patients\Models\Status;
 use Illuminate\Routing\Controller as BaseController;
 use App\Patients\Models\Patient;
 use Illuminate\Support\Facades\Auth;
@@ -50,24 +51,28 @@ class PatientsAdminController extends BaseController
 
 	public function create()
 	{
-		$patient     = new Noop();
-		$categories   = new Category();
+		$patient    = new Noop();
+		$categories = new Category();
+		$statuses   = new Status();
 
 		return View::make('patients.admin.create', [
-			'patient'     => $patient,
-			'categories'   => $categories
+			'patient'    => $patient,
+			'categories' => $categories,
+			'statuses'   => $statuses
 		]);
 	}
 
 	public function edit($id)
 	{
-		$patients = new Patient();
-		$patient = $patients->findOrFail($id);
-		$categories   = new Category();
+		$patients   = new Patient();
+		$patient    = $patients->findOrFail($id);
+		$categories = new Category();
+		$statuses   = new Status();
 
 		return View::make('patients.admin.edit', [
-			'patient'     => $patient,
-			'categories'   => $categories
+			'patient'    => $patient,
+			'categories' => $categories,
+			'statuses'   => $statuses
 		]);
 	}
 
@@ -95,6 +100,8 @@ class PatientsAdminController extends BaseController
 		$patient->male       = Input::get('male');
 		$patient->note       = Input::get('note');
 		$patient->address    = Input::get('address');
+		$patient->phone      = Input::get('phone');
+		$patient->email      = Input::get('email');
 		$patient->workFor    = Input::get('workFor');
 		$patient->birthdate  = Input::get('birthdate');
 		$patient->categoryId = Input::get('categoryId');
@@ -113,6 +120,8 @@ class PatientsAdminController extends BaseController
 		$patient->lastname   = Input::get('lastname');
 		$patient->firstname  = Input::get('firstname');
 		$patient->patronymic = Input::get('patronymic');
+		$patient->phone      = Input::get('phone');
+		$patient->email      = Input::get('email');
 		$patient->male       = Input::get('male');
 		$patient->note       = Input::get('note');
 		$patient->address    = Input::get('address');

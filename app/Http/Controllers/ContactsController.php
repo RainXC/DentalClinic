@@ -18,16 +18,6 @@ class ContactsController extends Controller {
 	*/
 
 	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('guest');
-	}
-
-	/**
 	 * Shown the contacts page
 	 *
 	 * @return Response

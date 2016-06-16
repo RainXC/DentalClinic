@@ -11,6 +11,8 @@ use App\User;
  */
 class Patient extends Eloquent implements Imaginable {
 
+	const simplePatientCategory = 1;
+
 	/**
 	 * @var array
 	 */
@@ -67,6 +69,16 @@ class Patient extends Eloquent implements Imaginable {
 	public function getPatronymic()
 	{
 		return $this->patronymic;
+	}
+
+	public function getPhone()
+	{
+		return $this->phone;
+	}
+
+	public function getEmail()
+	{
+		return $this->email;
 	}
 
 	public function getAddress()

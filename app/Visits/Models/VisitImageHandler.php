@@ -6,28 +6,27 @@
  * Time: 18:35
  */
 
-namespace App\Article\Models;
+namespace App\Visits\Models;
 
-use App\Article\Models\Article;
 use App\Images\ImageSizes;
+use App\Visits\Models\Visit;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class ArticleImageHandler
+class VisitImageHandler
 {
-    private $path = '/images/articles/';
-    private $article;
+    private $path = '/images/visits/';
+    private $object;
 
-    public function __construct(Article $article)
+    public function __construct(Visit $object)
     {
-        $this->article = $article;
+        $this->object = $object;
     }
 
     public function add(UploadedFile $file)
     {
-        if ( $this->article->image ) {
-            $this->article->image->delete();
+        if ( $this->object->image ) {
+            $this->object->image->delete();
         }
-
         if ( $this->addToDb($file) ) {
             return $file->move($this->getPath(), $this->getName());
         }
@@ -37,12 +36,13 @@ class ArticleImageHandler
     private function addToDb(UploadedFile $file)
     {
         $image = new Image();
+
         $image->title       = str_replace('.'.$file->getClientOriginalExtension(), '', $file->getClientOriginalName());
         $image->mime        = $file->getClientMimeType();
         $image->ext         = $file->getClientOriginalExtension();
         $image->filename    = $file->getClientOriginalName();
         $image->size        = $file->getClientSize();
-        $image->objectId    = $this->article->id;
+        $image->objectId    = $this->object->id;
         $image->statusId    = 1;
         $image->categoryId  = 1;
         $image->save();
@@ -52,6 +52,7 @@ class ArticleImageHandler
 
     private function setImage(Image $image)
     {
+//        var_dump($image);
         $this->image = $image;
         return $this;
     }

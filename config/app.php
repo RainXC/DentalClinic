@@ -39,7 +39,7 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'Asia/Dubai',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -147,10 +147,13 @@ return [
 		'App\Services\ServicesServiceProvider',
 		'App\Employees\EmployeesServiceProvider',
 		'App\Patients\PatientsServiceProvider',
+		'App\Visits\VisitsServiceProvider',
+		'App\Schedule\ScheduleServiceProvider',
 		'App\Gallery\GalleryServiceProvider',
 		'App\Article\ArticleServiceProvider',
         'Intervention\Image\ImageServiceProvider',
 		'JildertMiedema\LaravelPlupload\LaravelPluploadServiceProvider',
+		'Unisharp\Ckeditor\ServiceProvider'
 
 //        'Laracasts\Validation\ValidationServiceProvider',
 

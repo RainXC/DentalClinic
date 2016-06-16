@@ -1,16 +1,14 @@
 <?php namespace App\Article\Http\Controllers;
 
-use App\Gallery\Models\AlbumImage;
-use App\Gallery\Models\Album;
-use App\Gallery\Models\GalleryImageHandler;
-use App\Gallery\Models\Image;
-use App\Gallery\Models\ObjectImage;
+use App\Article\Models\Article;
+use App\Article\Models\Category;
+use App\Article\Models\Status;
 use App\Noop;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
-use JildertMiedema\LaravelPlupload\Facades\Plupload;
 
 class ArticleAdminController extends BaseController
 {
@@ -18,7 +16,7 @@ class ArticleAdminController extends BaseController
 
     public function __construct()
     {
-//		$this->middleware('guest');
+		$this->middleware('auth');
     }
 
 	public function index()
@@ -28,26 +26,19 @@ class ArticleAdminController extends BaseController
 
 	public function showAll()
 	{
-		$albums = new Album();
+		$articles = new Article();
 
-		return View::make('articles.admin.list', [ 'albums' => $albums ]);
-	}
-
-	public function show($id)
-	{
-		return $this->response->data([
-			'data' => $this->model->withVersion()->find($id),
-		]);
+		return View::make('articles.admin.list', [ 'articles' => $articles->get() ]);
 	}
 
 	public function destroy($id)
 	{
-        $albums = new Album();
-        $album  = $albums->findOrFail($id);
+        $articles = new Article();
+        $article  = $articles->findOrFail($id);
 
-        if ( ! $album->delete())
+        if ( ! $article->delete())
         {
-            return response()->json(['result'=>false, 'error'=>"Something went wrong when deleting Album with ID {$id}"]);
+            return response()->json(['result'=>false, 'error'=>"Something went wrong when deleting Article with ID {$id}"]);
         }
 
         return response()->json(true);
@@ -56,77 +47,60 @@ class ArticleAdminController extends BaseController
 	public function create()
 	{
 		return View::make('articles.admin.create', [
-			'album'     => new Noop(),
+			'article'    => new Noop(),
+			'categories' => new Category(),
+			'statuses'   => new Status()
 		]);
+	}
+
+	public function store( )
+	{
+		$article     = new Article();
+
+		$article->authorId        = Auth::id();
+		$article->name            = Input::get('name');
+		$article->alias           = Input::get('alias');
+		$article->description     = Input::get('description');
+		$article->text            = Input::get('text');
+		$article->statusId        = Input::get('statusId');
+		$article->categoryId      = Input::get('categoryId');
+		$article->metaTitle       = Input::get('metaTitle');
+		$article->metaKeywords    = Input::get('metaKeywords');
+		$article->metaDescription = Input::get('metaDesscription');
+		$article->save();
+
+		return response()->json($article->id);
 	}
 
 	public function edit($id)
 	{
-		$albums = new Album();
-		$album = $albums->findOrFail($id);
+		$articles = new Article();
+		$article = $articles->findOrFail($id);
 
 		return View::make('articles.admin.edit', [
-			'album'    => $album,
-			'albums'   => $albums,
+			'article'    => $article,
+			'categories' => new Category(),
+			'statuses'   => new Status()
 		]);
-	}
-
-	public function store()
-	{
-		$album     = new Album();
-
-		$album->authorId   = Auth::id();
-		$album->name = Input::get('name');
-		$album->description = Input::get('description');
-		$album->save();
-
-		return response()->json($album->id);
 	}
 
 	public function update($id)
 	{
-        $albums = new Album();
-        $album = $albums->findOrFail($id);
+        $articles = new Article();
+        $article = $articles->findOrFail($id);
 
-        $album->authorId   = Auth::id();
-        $album->name = Input::get('name');
-        $album->description = Input::get('description');
-        $album->save();
+		$article->authorId        = Auth::id();
+		$article->name            = Input::get('name');
+		$article->alias           = Input::get('alias');
+		$article->description     = Input::get('description');
+		$article->text            = Input::get('text');
+		$article->statusId        = Input::get('statusId');
+		$article->categoryId      = Input::get('categoryId');
+		$article->metaTitle       = Input::get('metaTitle');
+		$article->metaKeywords    = Input::get('metaKeywords');
+		$article->metaDescription = Input::get('metaDescription');
+        $article->save();
 
-        return response()->json($album->id);
-	}
-
-    public function uploadImage()
-    {
-        return Plupload::receive('file', function ($file)
-        {
-            $albums = new Album();
-            $album  = $albums->findOrFail($_GET['objectId']);
-            $imageHandler = new GalleryImageHandler($album);
-            if ( $imageHandler->add($file) ) {
-                return ['result' => 'ready', 'url' => $imageHandler->getImage()->getImage('640x480') ];
-            } else
-                return 'not ready';
-        });
-    }
-
-	public function setImagesPriority()
-	{
-		$images = new Image();
-		foreach ( $_GET['images'] as $imageId=>$priority ) {
-			$image = $images->find($imageId);
-			$image->priority = $priority;
-			$image->save();
-		}
-		return response()->json(true);
-	}
-
-	public function deleteImage($slug)
-	{
-		$images = new Image();
-		$image  = $images->find($slug);
-		$image->remove();
-
-		return $image->id;
+        return response()->json($article->id);
 	}
 }

@@ -21,6 +21,8 @@ class CreatePatientsTable extends Migration {
 			$table->string('patronymic', 100);
 			$table->string('address', 500);
 			$table->string('workFor', 300);
+			$table->string('phone', 50);
+			$table->string('email', 50);
 			$table->text('note');
 
 			$table->integer('statusId');
