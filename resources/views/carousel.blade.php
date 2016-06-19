@@ -31,7 +31,7 @@
             <img class="third-slide" src="/images/slides/slide1.min.png" alt="Позаботьтесь о своем здоровье">
             <div class="container">
                 <div class="carousel-caption">
-                    <h1>Здоровые зубы это возможно</h1>
+                    <h1>Позаботьтесь о своих зубах</h1>
                     <p>Посещение стоматолога неотъемлемая часть заботы о своих зубах</p>
                     <p><a class="btn btn-lg btn-primary" href="/contacts/" role="button">Записаться на прием</a></p>
                 </div>

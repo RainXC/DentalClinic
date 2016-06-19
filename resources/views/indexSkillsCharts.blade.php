@@ -80,21 +80,21 @@
                 <div class="animated">
                     <img class="img-circle" src="/images/index/bleach.png" alt="Generic placeholder image" width="300" height="300">
                     <h2>{{$firstArticle->getH1()}}</h2>
-                    <p>{{$firstArticle->getText()}}</p>
+                    <p>{!! $firstArticle->getText() !!}</p>
                 </div>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
                 <div class="animated">
                     <img class="img-circle" src="/images/index/healthCare.png" alt="Generic placeholder image" width="300" height="300">
                     <h2>{{$secondArticle->getH1()}}</h2>
-                    <p>{{$secondArticle->getText()}}</p>
+                    <p>{!! $secondArticle->getText() !!}</p>
                 </div>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
                 <div class="animated">
                     <img class="img-circle" src="/images/index/implants.png" alt="Generic placeholder image" width="300" height="300">
                     <h2>{{$thirdArticle->getH1()}}</h2>
-                    <p>{{$thirdArticle->getText()}}</p>
+                    <p>{!! $thirdArticle->getText() !!}</p>
                 </div>
             </div><!-- /.col-lg-4 -->
         </div>
