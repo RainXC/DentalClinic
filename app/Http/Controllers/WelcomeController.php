@@ -30,7 +30,7 @@ class WelcomeController extends Controller {
 	public function index()
 	{
 		$view = new IndexView();
-		return $view->printTemplate();
+		return $view->render();
 	}
 
 }

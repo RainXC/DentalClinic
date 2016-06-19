@@ -9,9 +9,10 @@
 namespace App\Views;
 
 use App\Article\Models\Article;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\View;
 
-class AboutView
+class AboutView extends ViewModel implements iView
 {
     private $settings = [
         'history'     => 'history',
@@ -19,41 +20,20 @@ class AboutView
         'partnership' => 'partnership',
     ];
 
-    private $data = [];
+    protected $template = 'about';
 
-    private function getHistory()
+    public function __construct()
     {
-        if ( !isset($this->data['history']) ) {
-            $articles = new Article();
-            $this->data['history'] = $articles->where('alias', '=', $this->settings['history'])->first();
+        foreach ( $this->settings as $key=>$alias ) {
+            $this->setContent($key, $this->_getArticleByAlias($alias));
         }
-        return $this->data['history'];
+
+        $this->setMetaFromLang('meta.about');
     }
 
-    private function getRecruitment()
+    private function _getArticleByAlias( $alias )
     {
-        if ( !isset($this->data['recruitment']) ) {
-            $articles = new Article();
-            $this->data['recruitment'] = $articles->where('alias', '=', $this->settings['recruitment'])->first();
-        }
-        return $this->data['recruitment'];
-    }
-
-    private function getPartnership()
-    {
-        if ( !isset($this->data['partnership']) ) {
-            $articles = new Article();
-            $this->data['partnership'] = $articles->where('alias', '=', $this->settings['partnership'])->first();
-        }
-        return $this->data['partnership'];
-    }
-
-    public function printTemplate()
-    {
-        return View::make('about', [
-            'history'     => $this->getHistory(),
-            'recruitment' => $this->getRecruitment(),
-            'partnership' => $this->getPartnership()
-        ]);
+        $articles = new Article();
+        return $articles->where('alias', '=', $alias)->first();
     }
 }

@@ -9,18 +9,20 @@
 namespace App\Views;
 
 use App\Article\Models\Article;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\View;
 
-class IndexView extends ViewModel implements iView
+class ContactsView extends ViewModel implements iView
 {
     private $settings = [
-        'mainArticle'   => 'forMainPage',
-        'firstArticle'  => 'firstIndex',
-        'secondArticle' => 'secondIndex',
-        'thirdArticle'  => 'thirdIndex',
+        'inTheWeek'      => 'inTheWeek',
+        'atTheSaturday'  => 'atTheSaturday',
+        'phones'         => 'phones',
+        'skype'          => 'skype',
+        'email'          => 'email',
     ];
 
-    protected $template = 'welcome';
+    protected $template = 'contacts';
 
     public function __construct()
     {
@@ -28,7 +30,7 @@ class IndexView extends ViewModel implements iView
             $this->setContent($key, $this->_getArticleByAlias($alias));
         }
 
-        $this->setMetaFromObject($this->getContent()['mainArticle']);
+        $this->setMetaFromLang('meta.contacts');
     }
 
     private function _getArticleByAlias( $alias )

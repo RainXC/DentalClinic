@@ -37,6 +37,10 @@
 	<script src="/js/admin/sorting.js"></script>
 	<script src="/build/js/intlTelInput.js"></script>
 
+	<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+	<script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+	<script src="/js/admin/ckEditor.init.js"></script>
+
 	<script src="/js/jquery/timepicker/jquery.datetimepicker.full.js"></script>
 	<link rel="stylesheet" href="/js/jquery/timepicker/jquery.datetimepicker.css">
 </head>

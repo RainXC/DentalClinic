@@ -79,25 +79,29 @@
             <div class="col-lg-4">
                 <div class="animated">
                     <img class="img-circle" src="/images/index/bleach.png" alt="Generic placeholder image" width="300" height="300">
-                    <h2>Отбеливание зубов</h2>
-                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                    <h2>{{$firstArticle->getH1()}}</h2>
+                    <p>{{$firstArticle->getText()}}</p>
                 </div>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
                 <div class="animated">
                     <img class="img-circle" src="/images/index/healthCare.png" alt="Generic placeholder image" width="300" height="300">
-                    <h2>Терапия</h2>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+                    <h2>{{$secondArticle->getH1()}}</h2>
+                    <p>{{$secondArticle->getText()}}</p>
                 </div>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
                 <div class="animated">
                     <img class="img-circle" src="/images/index/implants.png" alt="Generic placeholder image" width="300" height="300">
-                    <h2>Импланты</h2>
-                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                    <h2>{{$thirdArticle->getH1()}}</h2>
+                    <p>{{$thirdArticle->getText()}}</p>
                 </div>
             </div><!-- /.col-lg-4 -->
-            <a href="/services/" class="more">Узнать больше об услугах</a>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="/services/" class="more">Узнать больше об услугах</a>
+            </div>
         </div>
     </div>
 </div>

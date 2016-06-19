@@ -64,19 +64,19 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Диагноз</label>
                     <div class="col-sm-10">
-                        <textarea name="diagnosis" class="form-control"></textarea>
+                        <textarea name="diagnosis" class="form-control ckeditor"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Лечение</label>
                     <div class="col-sm-10">
-                        <textarea name="treatment" class="form-control"></textarea>
+                        <textarea name="treatment" class="form-control ckeditor"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Примечание</label>
                     <div class="col-sm-10">
-                        <textarea name="note" class="form-control"></textarea>
+                        <textarea name="note" class="form-control ckeditor"></textarea>
                     </div>
                 </div>
             </form>

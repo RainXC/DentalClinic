@@ -127,7 +127,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Примечание</label>
                     <div class="col-sm-10">
-                        <textarea name="note" class="form-control">{{$patient->getNote()}}</textarea>
+                        <textarea name="note" class="form-control ckeditor">{{$patient->getNote()}}</textarea>
                     </div>
                 </div>
             </form>

@@ -1,6 +1,7 @@
 <?php namespace App\Services\Http\Controllers;
 
 use App\Services\Models\ServicesCategories;
+use App\Views\ServicesView;
 use Illuminate\Routing\Controller as BaseController;
 use App\Services\Models\Service;
 use View;
@@ -10,10 +11,16 @@ class ServicesController extends BaseController {
 
 	public function showAll()
 	{
-        $services = Service::all();
+        $services   = Service::all();
         $categories = new ServicesCategories();
 
-		return View::make('services.list', [ 'services'=>$services, 'categories'=>$categories->getCategories()  ]);
+		$view = new ServicesView();
+		$view->setContents([
+			'services'   =>$services,
+			'categories' => $categories->getCategories()
+		]);
+
+		return $view->render();
 	}
 
 	public function show($slug)

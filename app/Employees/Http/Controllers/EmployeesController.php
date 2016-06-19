@@ -1,6 +1,7 @@
 <?php namespace App\Employees\Http\Controllers;
 
 use App\Employees\Models\EmployeesCategories;
+use App\Views\EmployeesView;
 use Illuminate\Routing\Controller as BaseController;
 use App\Employees\Models\Employee;
 use View;
@@ -11,7 +12,9 @@ class EmployeesController extends BaseController {
 	public function showAll()
 	{
         $categories = new EmployeesCategories();
-		return View::make('employees.list', [ 'categories' => $categories->getCategories()  ]);
+		$view = new EmployeesView();
+
+		return $view->setContent('categories', $categories->getCategories())->render();
 	}
 
 	public function show($slug)

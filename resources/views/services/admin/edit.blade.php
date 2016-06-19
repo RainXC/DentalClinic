@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label for="description" class="col-sm-2 control-label">Описание</label>
                     <div class="col-sm-10">
-                        <textarea id="description" name="description" class="form-control">{{$service->getDescription()}}</textarea>
+                        <textarea id="description" name="description" class="form-control ckeditor">{{$service->getDescription()}}</textarea>
                     </div>
                 </div>
                 <div class="form-group">

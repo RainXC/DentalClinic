@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Описание</label>
                     <div class="col-sm-10">
-                        <textarea name="description" class="form-control">{{$album->getDescription()}}</textarea>
+                        <textarea name="description" class="form-control ckeditor">{{$album->getDescription()}}</textarea>
                     </div>
                 </div>
                 <div class="form-group">

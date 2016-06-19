@@ -6,8 +6,6 @@
     <script src="/js/admin/natives.js"></script>
     <script src="/js/admin/objectView.class.js"></script>
     <script src="/js/plupload/plupload.full.min.js"></script>
-    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-    <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
     <script>
         $('textarea').ckeditor();
         // $('.textarea').ckeditor(); // if class is prefered.
@@ -75,13 +73,13 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Описание</label>
                     <div class="col-sm-10">
-                        <textarea name="description" class="form-control">{{$article->getDescription()}}</textarea>
+                        <textarea name="description" class="form-control ckeditor">{{$article->getDescription()}}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Текст</label>
                     <div class="col-sm-10">
-                        <textarea name="text" class="form-control">{{$article->getText()}}</textarea>
+                        <textarea name="text" class="form-control ckeditor">{{$article->getText()}}</textarea>
                     </div>
                 </div>
                 <div class="form-group">

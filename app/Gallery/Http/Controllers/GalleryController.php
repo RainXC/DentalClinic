@@ -2,6 +2,7 @@
 
 use App\Gallery\Models\Album;
 use App\Gallery\Models\ImageRow;
+use App\Views\GalleryView;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
 use App\Gallery\Models\Gallery;
@@ -13,7 +14,9 @@ class GalleryController extends BaseController {
 	public function showAll()
 	{
 		$albums = new Album();
-		return View::make('gallery.list', [ 'albums' => $albums->where('statusId', '=', 1)->get() ]);
+		$view = new GalleryView();
+
+		return $view->setContent('albums', $albums->where('statusId', '=', 1)->get())->render();
 	}
 
     public function showJson()

@@ -36,7 +36,7 @@ class ArticlesController extends Controller {
 	public function about()
 	{
 		$view = new AboutView();
-		return $view->printTemplate();
+		return $view->render();
 	}
 
     /**

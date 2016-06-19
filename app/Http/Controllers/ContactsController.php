@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactsRequest;
+use App\Views\ContactsView;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,7 +25,9 @@ class ContactsController extends Controller {
 	 */
 	public function contacts()
 	{
-		return view('contacts');
+		$view = new ContactsView();
+
+		return $view->render();
 	}
 
     /**

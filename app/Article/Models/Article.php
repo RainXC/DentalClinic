@@ -1,5 +1,6 @@
 <?php namespace App\Article\Models;
 
+use App\Interfaces\Metable;
 use App\Noop;
 use App\User;
 use Eloquent;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  * Class Gallery
  *
  */
-class Article extends Model
+class Article extends Model implements Metable
 {
 	/**
 	 * @const string

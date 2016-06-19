@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="{{isset($metaDescription) ? $metaDescription : ''}}">
+    <meta name="keywords" content="{{isset($metaKeywords) ? $metaKeywords : ''}}">
+    <meta name="author" content="Dmitri Cercel">
     <link rel="icon" href="/bootstrap/favicon.ico">
 
-    <title>Carousel Template for Bootstrap</title>
+    <title>{{isset($metaTitle) ? $metaTitle : 'Стоматологическая клиника "Русанна"'}}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet">

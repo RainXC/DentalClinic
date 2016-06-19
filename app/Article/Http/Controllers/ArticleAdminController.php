@@ -60,6 +60,7 @@ class ArticleAdminController extends BaseController
 		$article->authorId        = Auth::id();
 		$article->name            = Input::get('name');
 		$article->alias           = Input::get('alias');
+		$article->h1              = Input::get('h1');
 		$article->description     = Input::get('description');
 		$article->text            = Input::get('text');
 		$article->statusId        = Input::get('statusId');
@@ -92,6 +93,7 @@ class ArticleAdminController extends BaseController
 		$article->authorId        = Auth::id();
 		$article->name            = Input::get('name');
 		$article->alias           = Input::get('alias');
+		$article->h1              = Input::get('h1');
 		$article->description     = Input::get('description');
 		$article->text            = Input::get('text');
 		$article->statusId        = Input::get('statusId');
