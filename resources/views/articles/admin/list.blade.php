@@ -41,7 +41,6 @@
                 <th>Алиас</th>
                 <th>Статус</th>
                 <th>Категория</th>
-                <th>Дата регистрации</th>
                 <th>Действия</th>
             </tr>
             </thead>
@@ -52,6 +51,9 @@
                     <td>{{++$count}}</td>
                     <td>
                         {{$article->getName()}}
+                        <div class="additional">
+                            Создано <strong>{{$article->created_at}}</strong>
+                        </div>
                     </td>
                     <td>
                         {{$article->getAlias()}}
@@ -63,21 +65,20 @@
                         <font color="{{$article->category->getColor()}}">{{$article->category->getName()}}</font>
                     </td>
                     <td>
-                        {{$article->created_at}}
-                    </td>
-                    <td>
                         <a href="{{url('/admin/articles/'.$article->id)}}/edit" class="btn btn-primary btn-sm">Редактировать</a>
                         <a
-                                class="btn btn-danger btn-sm delete"
-                                data-action="/admin/articles/{{$article->id}}"
-                                data-post="_method=DELETE&_token={{ csrf_token() }}"
-                                data-confirm="Удалить запись?"
-                                >Удалить</a>
+                            class="btn btn-danger btn-sm delete"
+                            data-action="/admin/articles/{{$article->id}}"
+                            data-post="_method=DELETE&_token={{ csrf_token() }}"
+                            data-confirm="Удалить запись?"
+                        >Удалить</a>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+
+        <?=$articles->render()?>
     </div>
 </div>
 

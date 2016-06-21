@@ -30,7 +30,7 @@
         </thead>
         <tbody>
         <? $count = 0; ?>
-        @foreach ($patients->get() as $patient)
+        @foreach ($patients as $patient)
             <tr class="listRow" id="listRow{{$patient->id}}">
                 <td>{{++$count}}</td>
                 <td>
@@ -64,6 +64,8 @@
         @endforeach
         </tbody>
     </table>
+
+    <?=$patients->render()?>
 </div>
 
 

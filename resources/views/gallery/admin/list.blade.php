@@ -35,7 +35,7 @@
         </thead>
         <tbody>
         <? $count = 0; ?>
-        @foreach ($albums->get() as $album)
+        @foreach ($albums as $album)
             <tr class="listRow" id="listRow{{$album->id}}">
                 <td>{{++$count}}</td>
                 <td>{{$album->getName()}}</td>
@@ -58,6 +58,8 @@
         @endforeach
         </tbody>
     </table>
+
+    <?=$albums->render()?>
 </div>
 
 

@@ -28,7 +28,7 @@ class GalleryAdminController extends BaseController
 
 	public function showAll()
 	{
-		$albums = new Album();
+		$albums = Album::paginate(10);
 
 		return View::make('gallery.admin.list', [ 'albums' => $albums ]);
 	}

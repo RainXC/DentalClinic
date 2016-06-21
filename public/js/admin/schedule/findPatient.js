@@ -1,4 +1,4 @@
-var scheduleApp = angular.module('scheduleApp', ['ui.router'], function ($interpolateProvider, $httpProvider) {
+var scheduleApp = angular.module('scheduleApp', ['ui.router', 'internationalPhoneNumber'], function ($interpolateProvider, $httpProvider) {
     $interpolateProvider.startSymbol('{%');
     $interpolateProvider.endSymbol('%}');
 
@@ -56,8 +56,22 @@ var scheduleApp = angular.module('scheduleApp', ['ui.router'], function ($interp
     }];
 });
 
-scheduleApp.config(function($stateProvider, $urlRouterProvider){
+scheduleApp.config(function($stateProvider, $urlRouterProvider, ipnConfig){
     $urlRouterProvider.otherwise("/");
+
+    ipnConfig.allowExtensions = false;
+    ipnConfig.autoFormat = true;
+    ipnConfig.autoHideDialCode = false;
+    ipnConfig.defaultCountry = "md";
+    ipnConfig.ipinfoToken = "yolo";
+    ipnConfig.nationalMode = true;
+    ipnConfig.numberType = "MOBILE";
+    ipnConfig.onlyCountries = ['ru', 'md', 'ro', 'uk', 'it'];
+    ipnConfig.preferredCountries = ['md', 'ru'];
+    ipnConfig.utilsScript = "/build/js/utils.js";
+
+
+
 
     $stateProvider
         .state('today', {

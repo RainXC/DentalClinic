@@ -40,7 +40,7 @@
         </thead>
         <tbody>
         <? $count = 0; ?>
-        @foreach ($visits->get() as $visit)
+        @foreach ($visits as $visit)
             <tr class="listRow" id="listRow{{$visit->id}}">
                 <td>{{++$count}}</td>
                 <td>
@@ -57,10 +57,10 @@
                     </div>
                 </td>
                 <td>
-                    {{$visit->getDiagnosis()}}
+                    <div class="additional">{{$visit->getDiagnosis()?$visit->getDiagnosis():'Не определен'}}</div>
                 </td>
                 <td>
-                    {{$visit->getTreatment()}}
+                    <div class="additional">{{$visit->getTreatment()?$visit->getTreatment():'Не определено'}}</div>
                 </td>
                 <td>
                     <a href="{{url('/admin/visits/'.$visit->id)}}/edit" class="btn btn-primary btn-sm">Редактировать</a>
@@ -78,6 +78,8 @@
         @endforeach
         </tbody>
     </table>
+
+    <?=$visits->render()?>
 </div>
 
 

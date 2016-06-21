@@ -94,6 +94,11 @@ class Datetime implements \JsonSerializable
         return in_array($this->getNumber(), [0,6]);
     }
 
+    public function getDate()
+    {
+        return new Date($this->_day, $this->_month, $this->_year);
+    }
+
     public function getDateDMY()
     {
         return date("d-m-Y",strtotime($this->_year.'-'.$this->_month.'-'.$this->_day));

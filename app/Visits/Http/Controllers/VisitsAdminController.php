@@ -28,7 +28,7 @@ class VisitsAdminController extends BaseController
 
 	public function showAll()
 	{
-		$visits    = new Visit();
+		$visits    = Visit::paginate(10);
 
 		return View::make('visits.admin.list', [
 			'visits'    => $visits

@@ -32,7 +32,7 @@ class PatientsAdminController extends BaseController
 
 	public function showAll()
 	{
-		$patients    = new Patient();
+		$patients    = Patient::paginate(10);
 
 		return View::make('patients.admin.list', [
 			'patients'    => $patients

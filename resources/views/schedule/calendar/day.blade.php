@@ -1,5 +1,3 @@
-<script src="/js/admin/schedule/initTelAndPicker.js"></script>
-
 <div>
     <div class="content-section-a">
         <div class="container">
@@ -152,6 +150,7 @@
                                     id="phone"
                                     ng-model="visit.phone"
                                     ng-change="searchByPhone()"
+                                    international-phone-number
                                     type="tel"
                                     class="form-control"
                                     name="phone"

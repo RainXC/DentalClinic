@@ -31,7 +31,7 @@ class EmployeesAdminController extends BaseController
 
 	public function showAll()
 	{
-		$employees    = new Employee();
+		$employees    = Employee::paginate(10);
 		$positions    = new Position();
 		$specialities = new Speciality();
 

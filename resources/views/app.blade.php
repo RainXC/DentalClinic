@@ -9,12 +9,7 @@
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('/css/admin/controlPanel.css') }}" rel="stylesheet">
-	<link rel="stylesheet" href="{{ asset('/build/css/intlTelInput.css') }}">
-
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-	<script src="/node_modules/angular-ui-router/release/angular-ui-router.js"></script>
-	{{--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>--}}
-	{{--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>--}}
+	{{--<link rel="stylesheet" href="{{ asset('/build/css/intlTelInput.css') }}">--}}
 
 	<!-- Fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Exo+2:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
@@ -35,14 +30,23 @@
 
 	<script src="/js/admin/fileUploader.js"></script>
 	<script src="/js/admin/sorting.js"></script>
-	<script src="/build/js/intlTelInput.js"></script>
-
+	{{--<script src="/build/js/intlTelInput.js"></script>--}}
 	<script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 	<script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
 	<script src="/js/admin/ckEditor.init.js"></script>
 
 	<script src="/js/jquery/timepicker/jquery.datetimepicker.full.js"></script>
 	<link rel="stylesheet" href="/js/jquery/timepicker/jquery.datetimepicker.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script src="/node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+	{{--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-route.js"></script>--}}
+	{{--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular-animate.js"></script>--}}
+
+	<script src="/bower_components/intl-tel-input/build/js/intlTelInput.js"></script>
+	<link rel="stylesheet" href="/bower_components/intl-tel-input/build/css/intlTelInput.css">
+	<script src="/bower_components/intl-tel-input/lib/libphonenumber/build/utils.js"></script>
+	<script src="/bower_components/international-phone-number/releases/international-phone-number.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default">

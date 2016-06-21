@@ -26,9 +26,9 @@ class ArticleAdminController extends BaseController
 
 	public function showAll()
 	{
-		$articles = new Article();
+		$articles = Article::paginate(10);
 
-		return View::make('articles.admin.list', [ 'articles' => $articles->get() ]);
+		return View::make('articles.admin.list', [ 'articles' => $articles ]);
 	}
 
 	public function destroy($id)

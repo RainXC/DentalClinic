@@ -35,16 +35,20 @@
             <th>Описание</th>
             <th>Цена</th>
             <th>Еденица измерения</th>
-            <th>Дата регистрации</th>
             <th>Действия</th>
         </tr>
         </thead>
         <tbody>
         <? $count = 0; ?>
-        @foreach ($services->get() as $service)
+        @foreach ($services as $service)
             <tr class="listRow" id="listRow{{$service->id}}">
                 <td>{{++$count}}</td>
-                <td>{{$service->getName()}}</td>
+                <td>
+                    {{$service->getName()}}
+                    <div class="additional">
+                        Создано <strong>{{$service->created_at}}</strong>
+                    </div>
+                </td>
                 <td>
                     {{$service->getDescription()?$service->getDescription():'Описание отсутствует'}}
                 </td>
@@ -53,9 +57,6 @@
                 </td>
                 <td>
                     {{$service->getMeasure()}} {{$service->measurement->getNameByValue($service->getMeasure())}}
-                </td>
-                <td>
-                    {{$service->created_at}}
                 </td>
                 <td>
                     <a href="{{url('/admin/services/'.$service->id)}}/edit" class="btn btn-primary btn-sm">Редактировать</a>
@@ -70,6 +71,8 @@
         @endforeach
         </tbody>
     </table>
+
+    <?=$services->render()?>
 </div>
 
 

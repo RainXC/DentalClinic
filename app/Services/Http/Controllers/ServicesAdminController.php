@@ -32,7 +32,7 @@ class ServicesAdminController extends BaseController
 
 	public function showAll()
 	{
-		$services    = new Service();
+		$services    = Service::paginate(10);
 
 
 		return View::make('services.admin.list', [
