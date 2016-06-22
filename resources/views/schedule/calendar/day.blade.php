@@ -107,7 +107,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">x</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Запись пациента на приём</h4>
+                    <h4 class="modal-title" id="myModalLabel">Запись пациента на приём {%newVisitForm.$invalid%}</h4>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" ng-model="visit._token" value="{{ csrf_token() }}">
@@ -156,7 +156,7 @@
                                     name="phone"
                                     required
                                 >
-                                <p ng-show="newVisitForm.phone.$invalid && !newVisitForm.phone.$pristine && !visit.patientId" class="help-block">Пожалуйста укажите номер телефона</p>
+                                <p ng-show="newVisitForm.phone.$invalid && !newVisitForm.phone.$pristine && newVisitForm.$invalid && !visit.patientId" class="help-block">Пожалуйста укажите номер телефона</p>
                             </div>
                             <div class="form-group">
                                 <label for="lastname" class="control-label">
@@ -171,7 +171,7 @@
                                     name="lastname"
                                     required
                                 >
-                                <p ng-show="newVisitForm.lastname.$invalid && !newVisitForm.lastname.$pristine && !visit.patientId" class="help-block">Пожалуйста укажите фамилию</p>
+                                <p ng-show="newVisitForm.lastname.$invalid && !newVisitForm.lastname.$pristine && newVisitForm.$invalid && !visit.patientId" class="help-block">Пожалуйста укажите фамилию</p>
                             </div>
                             <div class="form-group">
                                 <label for="firstname" class="control-label">
@@ -186,7 +186,7 @@
                                     name="firstname"
                                     required
                                 >
-                                <p ng-show="newVisitForm.firstname.$invalid && !newVisitForm.firstname.$pristine && !visit.patientId" class="help-block">Пожалуйста укажите имя</p>
+                                <p ng-show="newVisitForm.firstname.$invalid && !newVisitForm.firstname.$pristine && newVisitForm.$invalid && !visit.patientId" class="help-block">Пожалуйста укажите имя</p>
                             </div>
                             <div class="form-group">
                                 <label for="patronymic" class="control-label">

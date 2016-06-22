@@ -2,6 +2,7 @@
 
 use App\Interfaces\Imaginable;
 use App\Patients\Models\Patient;
+use App\Time\Datetime;
 use Eloquent;
 use App\User;
 
@@ -39,6 +40,14 @@ class Visit extends Eloquent implements Imaginable {
 	public function status()
 	{
 		return $this->belongsTo(Status::class, 'statusId');
+	}
+
+	/**
+	 * @return Datetime
+	 */
+	public function getDate()
+	{
+		return new Datetime($this->date);
 	}
 
 	/**

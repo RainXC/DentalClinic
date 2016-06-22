@@ -49,7 +49,7 @@
                         {{$visit->patient->getPhone()}}, {{$visit->patient->getEmail()}}
                     </div>
                 </td>
-                <td>{{$visit->patient->getBirthdate()}}</td>
+                <td>{{$visit->getDate()}}</td>
                 <td>
                     {{$visit->getAddress()}}
                     <div class="additional">
