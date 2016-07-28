@@ -1,0 +1,16 @@
+{
+  "name": "Rusanna",
+  "version": "0.0.0",
+  "homepage": "https://github.com/RainXC/DentalClinic",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "international-phone-number": "^0.0.16"
+  }
+}
