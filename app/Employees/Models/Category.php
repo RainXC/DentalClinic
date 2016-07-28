@@ -21,6 +21,6 @@ class Category extends \App\Category {
      */
     public function items()
     {
-        return $this->hasMany(Employee::class, 'categoryId', 'id');
+        return $this->hasMany(Employee::class, 'categoryId', 'id')->where('statusId', 1);
     }
 }
