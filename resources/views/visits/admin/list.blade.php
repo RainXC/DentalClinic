@@ -8,7 +8,6 @@
     <div class="container">
         <h1>
             Визиты пациентов
-            <a href="/admin/visits/create/" class="btn btn-primary btn-sm">Создать</a>
             <a href="/admin/visits/categories/" class="btn btn-warning btn-sm">Редактировать категории</a>
         </h1>
     </div>

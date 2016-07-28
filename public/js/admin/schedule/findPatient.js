@@ -175,7 +175,7 @@ scheduleApp.controller('visitsList', function ($scope, $http, $stateParams) {
     };
 
     $scope.createNewVisit = function(){
-        if ( $scope.newVisitForm.$invalid & !$scope.visit.patientId ) {
+        if ( $scope.newVisitForm.$invalid && !$scope.visit.patientId ) {
             console.log('Error in form');
         } else {
             $http.post('/admin/schedule', $scope.visit)

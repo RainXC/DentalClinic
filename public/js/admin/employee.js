@@ -18,9 +18,9 @@ $(function(){
 });
 var objectView  = function(){};
 objectView.settings = {
-    'form'           : '.objectForm',
-    'submit'         : '.objectFormSubmit',
-    'errorContainer' : '.error',
+    'form'             : '.objectForm',
+    'submit'           : '.objectFormSubmit',
+    'errorContainer'   : '.error',
     'successContainer' : '.success'
 };
 
@@ -52,7 +52,7 @@ objectView.formCallback = function (response) {
 objectView.successMessage = function(text){
     objectView.getSuccessContainer().text(text).fadeIn(400, function(){
         var that = this;
-        setInterval(function(){ $(that).fadeOut(300) }, 8000);
+        //setInterval(function(){ $(that).fadeOut(300) }, 8000);
     });
 };
 
@@ -63,7 +63,7 @@ objectView.getSuccessContainer = function () {
 objectView.errorMessage = function(text){
     objectView.getErrorContainer().text(text).fadeIn(400, function(){
         var that = this;
-        setInterval(function(){ $(that).fadeOut(300) }, 8000);
+        //setInterval(function(){ $(that).fadeOut(300) }, 8000);
     });
 };
 
