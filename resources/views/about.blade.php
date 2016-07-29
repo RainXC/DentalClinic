@@ -21,7 +21,7 @@
             </div>
             <div class="col-md-6">
                 <p>
-                    {{$history->getText()}}
+                    {!! $history->getText() !!}
                 </p>
             </div>
         </div>
@@ -30,7 +30,8 @@
         <div class="container">
             <div class="col-md-6">
                 <h3>{{$recruitment->getName()}}</h3>
-                <p>{{$recruitment->getText()}}</p>
+                <p>
+                    {!! $recruitment->getText() !!}</p>
                 <p></p>
             </div>
             <div class="col-md-6">
