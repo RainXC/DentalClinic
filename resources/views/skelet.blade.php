@@ -20,7 +20,7 @@
     <link href="{{ asset('/css/dent.css') }}" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Exo+2:400,700,500,600&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBPUe02R4VteQsZZIzrdoyLIn2S36aoYZc"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="/js/knob.js"></script>
