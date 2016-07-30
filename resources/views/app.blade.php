@@ -68,9 +68,9 @@
 					<li><a href="{{ url('/admin/services/') }}">Услуги</a></li>
 					<li><a href="{{ url('/admin/employees/') }}">Сотрудники</a></li>
 					<li><a href="{{ url('/admin/gallery/') }}">Галерея</a></li>
-					<li><a href="{{ url('/admin/patients/') }}">Пациенты</a></li>
-					<li><a href="{{ url('/admin/visits/') }}">Посещения</a></li>
-					<li><a href="{{ url('/admin/schedule/') }}">Расписание</a></li>
+					{{--<li><a href="{{ url('/admin/patients/') }}">Пациенты</a></li>--}}
+					{{--<li><a href="{{ url('/admin/visits/') }}">Посещения</a></li>--}}
+					{{--<li><a href="{{ url('/admin/schedule/') }}">Расписание</a></li>--}}
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
