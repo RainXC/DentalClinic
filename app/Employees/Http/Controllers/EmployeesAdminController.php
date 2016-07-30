@@ -6,6 +6,7 @@ use App\Employees\Models\EmployeeImageUploader;
 use App\Employees\Models\EmployeesCategories;
 use App\Employees\Models\Position;
 use App\Employees\Models\Speciality;
+use App\Employees\Models\Status;
 use App\Noop;
 use Illuminate\Routing\Controller as BaseController;
 use App\Employees\Models\Employee;
@@ -78,12 +79,14 @@ class EmployeesAdminController extends BaseController
 		$positions    = new Position();
 		$specialities = new Speciality();
 		$categories   = new Category();
+		$statuses     = new Status();
 
 		return View::make('employees.admin.edit', [
 			'employee'     => $employee,
 			'positions'    => $positions,
 			'specialities' => $specialities,
-			'categories'   => $categories
+			'categories'   => $categories,
+			'statuses'     => $statuses
 		]);
 	}
 
@@ -129,6 +132,7 @@ class EmployeesAdminController extends BaseController
 		$employee->patronymic = Input::get('patronymic');
 		$employee->positionId = Input::get('positionId');
 		$employee->categoryId = Input::get('categoryId');
+		$employee->statusId   = Input::get('statusId');
 		$employee->male       = Input::get('male');
 
 		if ( Input::get('speciality') ) {

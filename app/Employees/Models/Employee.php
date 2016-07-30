@@ -106,4 +106,9 @@ class Employee extends Eloquent implements Imaginable {
     {
         return '/images/employees/';
     }
+
+    public function isFired()
+    {
+        return $this->statusId==2;
+    }
 }

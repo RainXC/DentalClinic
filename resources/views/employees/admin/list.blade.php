@@ -29,7 +29,7 @@
         <tbody>
         <? $count = 0; ?>
         @foreach ($employees as $employee)
-            <tr class="listRow" id="listRow{{$employee->id}}">
+            <tr class="listRow <?=$employee->isFired()?'greyRow':''?>" id="listRow{{$employee->id}}">
                 <td>{{++$count}}</td>
                 <td>
                     <img src="{{$employee->getAvatar()}}" height="50">
@@ -42,6 +42,9 @@
                 </td>
                 <td>
                     {{$employee->position->getName()}}
+                    <div class="additional">
+                        <span style="color: {{$employee->status->color}}; font-weight: bold;">{{$employee->status->name}}</span>
+                    </div>
                 </td>
                 <td>
                     <ul>

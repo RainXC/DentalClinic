@@ -47,6 +47,16 @@
                 <input type="hidden" name="_method" value="PUT">
                 <input type="hidden" name="id" value="{{$employee->id}}">
                 <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Статус</label>
+                    <div class="col-sm-10">
+                        <select name="statusId" class="form-control">
+                            @foreach ($statuses->get() as $status)
+                                <option value="{{$status->id}}" <?=$employee->statusId==$status->id?'selected="selected"':''?>> {{$status->getName()}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Категория</label>
                     <div class="col-sm-10">
                         <select name="categoryId" class="form-control">
