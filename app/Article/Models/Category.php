@@ -17,6 +17,7 @@ class Category extends \App\Category {
      */
     public function items()
     {
+
         return $this->hasMany(Article::class, 'categoryId', 'id');
     }
 }
