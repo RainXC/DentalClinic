@@ -8,12 +8,13 @@ use Eloquent;
  *
  * @property \App\User                $author
  */
-class Employee extends Eloquent implements Imaginable {
+class Employee extends Eloquent implements Imaginable
+{
 
-	/**
-	 * @var array
-	 */
-	protected $guarded = ['id', 'firstname'];
+    /**
+     * @var array
+     */
+    protected $guarded = ['id', 'firstname'];
     /**
      * @var Speciality
      */
@@ -24,20 +25,30 @@ class Employee extends Eloquent implements Imaginable {
     protected $employeeSpecialities;
 
     /**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function category()
-	{
-		return $this->belongsTo(Category::class, 'categoryId');
-	}
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'categoryId');
+    }
+
+    public function getCategory()
+    {
+        return $this->category;
+    }
 
     /**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function status()
-	{
-		return $this->belongsTo(Status::class, 'statusId');
-	}
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'statusId');
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
 
     /**
      * @return string
@@ -62,9 +73,19 @@ class Employee extends Eloquent implements Imaginable {
         return $this->belongsToMany('App\Employees\Models\Speciality', 'employees_specialities', 'employeeId', 'specialityId');
     }
 
+    public function getSpecialities()
+    {
+        return $this->specialities;
+    }
+
     public function position()
     {
         return $this->hasOne(Position::class, 'id', 'positionId');
+    }
+
+    public function getPosition()
+    {
+        return $this->position;
     }
 
     public function image()

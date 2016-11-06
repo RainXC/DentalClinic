@@ -151,6 +151,7 @@ return [
 		'App\Schedule\ScheduleServiceProvider',
 		'App\Gallery\GalleryServiceProvider',
 		'App\Article\ArticleServiceProvider',
+        'App\Landing\LandingServiceProvider',
         'Intervention\Image\ImageServiceProvider',
 		'JildertMiedema\LaravelPlupload\LaravelPluploadServiceProvider',
 		'Unisharp\Ckeditor\ServiceProvider'

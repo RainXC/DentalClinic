@@ -11,7 +11,11 @@ namespace App\Images;
 class ImageSizes
 {
     static public $possibleSizes = [
+        '50x50',
         '200x200',
+        '150x150',
+        '225x225',
+        '400x400',
         '640x480',
         '1024x768',
         '1280x960',

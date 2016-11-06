@@ -40,13 +40,16 @@ class ContactsController extends Controller {
         $data = [
             'name'  => $request->input('name'),
             'phone' => $request->input('phone'),
+            'email' => $request->input('email'),
             'text'  => $request->input('text')
         ];
 
-        Mail::queue('emails.contacts', $data, function($message)
-        {
-            $message->to('d.cercel@webdelo.org', 'Дмитрий Черчел')->subject('Обращение с сайта dent.app');
-        });
+        mail('d.cercel@webdelo.org', 'Обращение с сайта rusanna-dent.md', "
+            Имя: $data[name] \r\n
+            Телефон: $data[phone] \r\n
+            E-mail: $data[email] \r\n
+            Сообщение: $data[text] \r\n
+        " );
 
         return response()->json(true);
 	}

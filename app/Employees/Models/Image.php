@@ -130,9 +130,7 @@ class Image extends Eloquent {
         $sizer = new ImageSizes($size);
 
         return InterventionImage::make( $this->getRealfilepath() )
-            ->resize( $sizer->getWidth(), $sizer->getHeight(), function($constraint) {
-                $constraint->aspectRatio();
-            })->save( $this->getFilepath($sizer) );
+            ->fit( $sizer->getWidth(), $sizer->getHeight() )->save( $this->getFilepath($sizer) );
     }
 
     public function getHandler()
